@@ -8,4 +8,10 @@
     <p>
         Tutaj beda kategorie
     </p>
+
+    <div>
+        {% for category in categories %}
+            <div>{{ category.name }}</div>
+        {% endfor %}
+    </div>
 {% endblock %}
