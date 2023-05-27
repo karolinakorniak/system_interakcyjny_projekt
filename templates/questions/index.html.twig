@@ -1,13 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Questions
+    {{ 'questions.title'|trans }}
 {% endblock %}
 
 {% block body %}
-    <p>
-       Tutaj beda pytania
-    </p>
     <div>
         {% for question in questions %}
             <div>{{ question.title }}</div>

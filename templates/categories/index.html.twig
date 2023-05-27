@@ -1,14 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Categories
+    {{ 'categories.title'|trans }}
 {% endblock %}
 
 {% block body %}
-    <p>
-        Tutaj beda kategorie
-    </p>
-
     <div>
         {% for category in categories %}
             <div>{{ category.name }}</div>
