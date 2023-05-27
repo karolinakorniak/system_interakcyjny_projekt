@@ -8,4 +8,9 @@
     <p>
        Tutaj beda pytania
     </p>
+    <div>
+        {% for question in questions %}
+            <div>{{ question.title }}</div>
+        {% endfor %}
+    </div>
 {% endblock %}
