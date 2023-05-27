@@ -8,4 +8,9 @@
     <p>
         Tutaj beda autorzy
     </p>
+    <div>
+        {% for author in authors %}
+            <div>{{ author.name }}</div>
+        {% endfor %}
+    </div>
 {% endblock %}
