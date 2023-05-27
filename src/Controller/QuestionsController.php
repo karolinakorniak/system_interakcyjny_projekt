@@ -12,7 +12,7 @@ class QuestionsController extends AbstractController
     public function index(): Response
     {
         return $this->render(
-            'questions.html.twig',
+            'questions/index.html.twig',
         );
     }
 }
