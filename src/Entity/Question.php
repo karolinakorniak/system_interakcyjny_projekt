@@ -39,9 +39,16 @@ class Question
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'questions')]
     private Collection $categories;
 
+    #[ORM\OneToMany(mappedBy: 'question', targetEntity: Answer::class, orphanRemoval: true)]
+    private Collection $answers;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Answer $best_answer = null;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->answers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -141,6 +148,48 @@ class Question
     public function removeCategory(Category $category): self
     {
         $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Answer>
+     */
+    public function getAnswers(): Collection
+    {
+        return $this->answers;
+    }
+
+    public function addAnswer(Answer $answer): self
+    {
+        if (!$this->answers->contains($answer)) {
+            $this->answers->add($answer);
+            $answer->setQuestion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnswer(Answer $answer): self
+    {
+        if ($this->answers->removeElement($answer)) {
+            // set the owning side to null (unless already changed)
+            if ($answer->getQuestion() === $this) {
+                $answer->setQuestion(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getBestAnswer(): ?Answer
+    {
+        return $this->best_answer;
+    }
+
+    public function setBestAnswer(?Answer $best_answer): self
+    {
+        $this->best_answer = $best_answer;
 
         return $this;
     }
