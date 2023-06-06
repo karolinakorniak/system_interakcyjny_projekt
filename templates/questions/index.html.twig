@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block body %}
-    <div>
+    <div class="p-2 list-group">
         {% for question in questions %}
-            <div>{{ question.title }}</div>
+            <div class="list-group-item">
+                {{ question.title }}
+            </div>
         {% endfor %}
     </div>
 {% endblock %}
