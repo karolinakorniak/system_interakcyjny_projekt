@@ -2,6 +2,10 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
+            <trans-unit id="home.welcome">
+                <source>home.welcome</source>
+                <target>Welcome!</target>
+            </trans-unit>
             <trans-unit id="authors.title">
                 <source>authors.title</source>
                 <target>Authors</target>
