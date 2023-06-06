@@ -12,19 +12,22 @@ use App\Entity\User;
  */
 class UserFixtures extends AbstractBaseFixtures
 {
+    public static int $USER_COUNT = 2;
+
     /**
      * Load data.
      */
     public function loadData(): void
     {
-        for ($i = 0; $i < 10; ++$i) {
+        $this->createMany(self::$USER_COUNT, "users", function () {
             $user = new User();
             $user->setEmail($this->faker->email);
             $user->setPassword(
                 $this->faker->password
             );
-            $this->manager->persist($user);
-        }
+
+            return $user;
+        });
 
         $this->manager->flush();
     }
