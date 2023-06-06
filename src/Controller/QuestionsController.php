@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\QuestionsRepository;
+use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuestionsController extends AbstractController
 {
     #[Route('/')]
-    public function index(QuestionsRepository $repository): Response
+    public function index(QuestionRepository $repository): Response
     {
         return $this->render(
             'questions/index.html.twig',
@@ -23,7 +23,7 @@ class QuestionsController extends AbstractController
     public function singleQuestion(string $slug): Response
     {
         return $this->render(
-            'single.html.twig',
+            'questions/single.html.twig',
             ['slug' => $slug]
         );
     }
