@@ -14,6 +14,12 @@
         {% endblock %}
     </head>
     <body>
+        <div>
+            <nav>
+                <a href="{{ url('question_index') }}">{{ 'nav.questions' | trans }}</a>
+                <a href="{{ url('category_index') }}">{{ 'nav.categories' | trans }}</a>
+            </nav>
+        </div>
         {% block body %}{% endblock %}
     </body>
 </html>

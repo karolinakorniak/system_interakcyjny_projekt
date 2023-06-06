@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route("/questions")]
 class QuestionsController extends AbstractController
 {
-    #[Route('/')]
+    #[Route('/', name: 'question_index')]
     public function index(QuestionRepository $repository): Response
     {
         return $this->render(
