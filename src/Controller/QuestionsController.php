@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Question;
 use App\Repository\CategoryRepository;
 use App\Repository\QuestionRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -29,10 +30,8 @@ class QuestionsController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'single_question')]
-    public function singleQuestion(string $slug, QuestionRepository $repository): Response
+    public function singleQuestion(Question $question): Response
     {
-        $question = $repository->findOneBy(['slug' => $slug]);
-
         return $this->render(
             'questions/single.html.twig',
             ['question' => $question]
