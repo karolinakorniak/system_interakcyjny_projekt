@@ -32,9 +32,6 @@ class Question
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $last_modified_date = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $author = null;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'questions')]
     private Collection $categories;
@@ -44,6 +41,10 @@ class Question
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Answer $best_answer = null;
+
+    #[ORM\ManyToOne(inversedBy: 'questions')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $author = null;
 
     public function __construct()
     {
