@@ -27,12 +27,14 @@ class QuestionsController extends AbstractController
         );
     }
 
-    #[Route('/{slug}')]
-    public function singleQuestion(string $slug): Response
+    #[Route('/{slug}', name: 'single_question')]
+    public function singleQuestion(string $slug, QuestionRepository $repository): Response
     {
+        $question = $repository->findOneBy(['slug' => $slug]);
+
         return $this->render(
             'questions/single.html.twig',
-            ['slug' => $slug]
+            ['question' => $question]
         );
     }
 }

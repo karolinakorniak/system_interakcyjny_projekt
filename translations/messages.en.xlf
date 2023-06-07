@@ -36,7 +36,7 @@
             </trans-unit>
             <trans-unit id="2">
                 <source>questions.labels.authorName</source>
-                <target>Author</target>
+                <target>Asked by</target>
             </trans-unit>
             <trans-unit id="3">
                 <source>questions.labels.created</source>
@@ -63,7 +63,7 @@
                 <target># of questions</target>
             </trans-unit>
             <trans-unit id="9">
-                <source>questions.categories</source>
+                <source>questions.labels.categories</source>
                 <target>Categories</target>
             </trans-unit>
             <trans-unit id="10">
@@ -77,6 +77,18 @@
             <trans-unit id="12">
                 <source>author.labels.numberOfQuestions</source>
                 <target># of questions</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>questions.labels.content</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>answers.title</source>
+                <target>Answers</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>answers.header</source>
+                <target>%username% answered on %date%</target>
             </trans-unit>
         </body>
     </file>

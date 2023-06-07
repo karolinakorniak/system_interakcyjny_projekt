@@ -12,7 +12,7 @@
             <tr>
                 <th>{{ 'questions.labels.title' | trans }}</th>
                 <th>{{ 'questions.labels.answerCount' | trans }}</th>
-                <th>{{ 'questions.categories' | trans }}</th>
+                <th>{{ 'questions.labels.categories' | trans }}</th>
                 <th>{{ 'questions.labels.authorName' | trans }}</th>
                 <th>{{ 'questions.labels.created' | trans }}</th>
                 <th>{{ 'questions.labels.lastModified' | trans }}</th>
@@ -21,11 +21,15 @@
             <tbody>
             {% for question in pagination.items %}
                 <tr>
-                    <td>{{ question.title }}</td>
+                    <td>
+                        <a href="{{ url('single_question', {slug: question.slug}) }}">
+                            {{ question.title }}
+                        </a>
+                    </td>
                     <td>{{ question.answers.count() }}</td>
                     <td>
                         {% for category in question.categories %}
-                        <span>{{ category.name }}</span>
+                            <span>{{ category.name }}</span>
                         {% endfor %}
                     </td>
                     <td>{{ question.author.getUserData().name }}</td>
