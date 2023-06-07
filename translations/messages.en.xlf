@@ -90,6 +90,14 @@
                 <source>answers.header</source>
                 <target>%username% answered on %date%</target>
             </trans-unit>
+            <trans-unit id="16">
+                <source>labels.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>questions.in_category</source>
+                <target>Questions in %category% category</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\QuestionRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,5 +37,27 @@ class QuestionsController extends AbstractController
             'questions/single.html.twig',
             ['question' => $question]
         );
+    }
+
+    #[Route('/byCategory/{categorySlug}', name: "question_by_category")]
+    public function byCategory(Request            $request,
+                               QuestionRepository $questionRepository,
+                               CategoryRepository $categoryRepository,
+                               PaginatorInterface $paginator,
+                               string             $categorySlug): Response
+    {
+        $pagination = $paginator->paginate(
+            $questionRepository->queryByCategorySlug($categorySlug),
+            $request->query->getInt('page', 1),
+            QuestionRepository::PAGINATOR_ITEMS_PER_PAGE,
+        );
+
+        $category = $categoryRepository->findOneBy(["slug" => $categorySlug]);
+
+        return $this->render(
+            'questions/index.html.twig',
+            ['pagination' => $pagination, 'category' => $category]
+        );
+
     }
 }

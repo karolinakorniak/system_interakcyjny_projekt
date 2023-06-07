@@ -13,6 +13,7 @@
                 <th>{{ 'category.labels.name' | trans }}</th>
                 <th>{{ 'category.labels.authorName' | trans }}</th>
                 <th>{{ 'category.labels.numberOfQuestions' | trans }}</th>
+                <th>{{ 'labels.actions' | trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -21,6 +22,7 @@
                     <td>{{ category.name }}</td>
                     <td>{{ category.author.getUserData().name }}</td>
                     <td>{{ category.questions.count() }}</td>
+                    <td><a href="{{ url('question_by_category', {categorySlug: category.slug}) }}">Questions</a></td>
                 </tr>
             {% endfor %}
             </tbody>

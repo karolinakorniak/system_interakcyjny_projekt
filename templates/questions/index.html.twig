@@ -5,7 +5,11 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'questions.title'|trans }}</h1>
+    {% if category is defined %}
+        <h1>{{ 'questions.in_category'|trans({'%category%': category.name}) }}</h1>
+    {% else %}
+        <h1>{{ 'questions.title'|trans }}</h1>
+    {% endif %}
     {% if pagination is defined and pagination.items|length %}
         <table class="table table-striped">
             <thead>
