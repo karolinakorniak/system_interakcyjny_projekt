@@ -16,7 +16,7 @@ class QuestionsController extends AbstractController
     public function index(Request $request, QuestionRepository $repository, PaginatorInterface $paginator): Response
     {
         $pagination = $paginator->paginate(
-            $repository->findAll(),
+            $repository->queryAll(),
             $request->query->getInt('page', 1),
             QuestionRepository::PAGINATOR_ITEMS_PER_PAGE,
         );
