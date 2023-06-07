@@ -23,6 +23,9 @@ class User
     #[ORM\Column]
     private array $roles = [];
 
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?UserData $userData = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,23 @@ class User
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getUserData(): ?UserData
+    {
+        return $this->userData;
+    }
+
+    public function setUserData(UserData $userData): self
+    {
+        // set the owning side of the relation if necessary
+        if ($userData->getUser() !== $this) {
+            $userData->setUser($this);
+        }
+
+        $this->userData = $userData;
 
         return $this;
     }

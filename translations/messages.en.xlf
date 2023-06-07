@@ -26,6 +26,30 @@
                 <source>nav.categories</source>
                 <target>Categories</target>
             </trans-unit>
+            <trans-unit id="0">
+                <source>questions.labels.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="1">
+                <source>questions.labels.answerCount</source>
+                <target># of answers</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>questions.labels.authorName</source>
+                <target>Author</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>questions.labels.created</source>
+                <target>Created at</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>questions.labels.lastModified</source>
+                <target>Edited At</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>message.empty_list</source>
+                <target>Not found!</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
