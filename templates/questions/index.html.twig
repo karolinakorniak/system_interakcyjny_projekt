@@ -12,6 +12,7 @@
             <tr>
                 <th>{{ 'questions.labels.title' | trans }}</th>
                 <th>{{ 'questions.labels.answerCount' | trans }}</th>
+                <th>{{ 'questions.categories' | trans }}</th>
                 <th>{{ 'questions.labels.authorName' | trans }}</th>
                 <th>{{ 'questions.labels.created' | trans }}</th>
                 <th>{{ 'questions.labels.lastModified' | trans }}</th>
@@ -22,6 +23,11 @@
                 <tr>
                     <td>{{ question.title }}</td>
                     <td>{{ question.answers.count() }}</td>
+                    <td>
+                        {% for category in question.categories %}
+                        <span>{{ category.name }}</span>
+                        {% endfor %}
+                    </td>
                     <td>{{ question.author.getUserData().name }}</td>
                     <td>{{ question.getCreatedDate()|date('Y/m/d') }}</td>
                     <td>{{ question.getLastModifiedDate()|date('Y/m/d') }}</td>

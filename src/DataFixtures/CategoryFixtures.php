@@ -12,8 +12,8 @@ class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureI
     {
         $this->createMany(10, "categories", function () {
             $category = new Category();
-            $category->setName($this->faker->sentence(2));
-            $category->setSlug($this->faker->slug(2));
+            $category->setName($this->faker->domainWord);
+            $category->setSlug($this->faker->slug(1));
             /** @var User $author */
             $author = $this->getRandomReference("users");
             $category->setAuthor($author);
