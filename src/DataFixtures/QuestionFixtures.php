@@ -18,12 +18,7 @@ class QuestionFixtures extends AbstractBaseFixtures implements DependentFixtureI
             $question->setContent($this->faker->realTextBetween(150, 250));
             $question->setCreatedDate(
                 DateTimeImmutable::createFromMutable(
-                    $this->faker->dateTimeBetween('-100days', '-50days')
-                )
-            );
-            $question->setLastModifiedDate(
-                DateTimeImmutable::createFromMutable(
-                    $this->faker->dateTimeBetween("-50days", '-2days')
+                    $this->faker->dateTimeBetween('-7days', '-1days')
                 )
             );
             /** @var User $author */

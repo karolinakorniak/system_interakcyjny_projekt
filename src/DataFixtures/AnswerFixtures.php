@@ -21,7 +21,7 @@ class AnswerFixtures extends AbstractBaseFixtures implements DependentFixtureInt
             $answer->setIsDeleted(false);
             $answer->setDate(
                 DateTimeImmutable::createFromMutable(
-                    $this->faker->dateTimeBetween('-50days', '-3days')
+                    $this->faker->dateTimeBetween('-1days', '-0days')
                 )
             );
             /** @var Question $question */
