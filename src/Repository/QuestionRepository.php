@@ -50,7 +50,7 @@ class QuestionRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('q.last_modified_date', 'DESC');
+            ->orderBy('q.created_date', 'ASC');
     }
 
     /**
