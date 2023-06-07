@@ -17,7 +17,7 @@ class AnswerFixtures extends AbstractBaseFixtures implements DependentFixtureInt
             $answer = new Answer();
             $answer->setUsername($this->faker->userName);
             $answer->setEmail($this->faker->email);
-            $answer->setContent($this->faker->paragraph);
+            $answer->setContent($this->faker->realTextBetween(100, 180));
             $answer->setIsDeleted(false);
             $answer->setDate(
                 DateTimeImmutable::createFromMutable(
