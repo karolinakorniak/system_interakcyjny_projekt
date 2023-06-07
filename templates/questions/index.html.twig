@@ -37,8 +37,8 @@
                         {% endfor %}
                     </td>
                     <td>{{ question.author.getUserData().name }}</td>
-                    <td>{{ question.getCreatedDate()|date('Y/m/d') }}</td>
-                    <td>{{ question.getLastModifiedDate()|date('Y/m/d') }}</td>
+                    <td>{{ question.getCreatedDate()|format_date('relative_long') }}</td>
+                    <td>{{ question.getLastModifiedDate()|format_date('relative_long') }}</td>
                 </tr>
             {% endfor %}
             </tbody>

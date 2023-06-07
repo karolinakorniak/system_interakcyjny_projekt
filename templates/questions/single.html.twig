@@ -36,7 +36,7 @@
     <div class="vstack">
         {% for answer in question.answers %}
             <div>
-                <div>{{ 'answers.header' | trans({'%username%': answer.username, '%date%': answer.date | date('Y/m/d')}) }}</div>
+                <div>{{ 'answers.header' | trans({'%username%': answer.username, '%date%': answer.date | format_date('short')}) }}</div>
                 <div>{{ answer.content }}</div>
             </div>
         {% endfor %}
