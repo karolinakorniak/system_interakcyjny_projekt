@@ -34,11 +34,11 @@
     </div>
     <h3>{{ 'answers.title' | trans }}</h3>
     <a class="btn btn-primary" href="{{ url('add_answer', {slug:question.slug}) }}">{{ 'action.answer' | trans }}</a>
-    <div class="vstack">
+    <div class="vstack gap-3 mt-3">
         {% for answer in question.answers %}
-            <div>
+            <div class="border rounded-3 p-3">
                 <div>{{ 'answers.header' | trans({'%username%': answer.username, '%date%': answer.date | format_date('short')}) }}</div>
-                <div>{{ answer.content }}</div>
+                <div class="text-wrap text-break">{{ answer.content }}</div>
             </div>
         {% endfor %}
     </div>
