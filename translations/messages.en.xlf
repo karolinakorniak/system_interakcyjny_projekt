@@ -6,10 +6,6 @@
                 <source>home.welcome</source>
                 <target>Welcome!</target>
             </trans-unit>
-            <trans-unit id="authors.title">
-                <source>authors.title</source>
-                <target>Authors</target>
-            </trans-unit>
             <trans-unit id="questions.title">
                 <source>questions.title</source>
                 <target>Questions</target>
@@ -65,18 +61,6 @@
             <trans-unit id="9">
                 <source>questions.labels.categories</source>
                 <target>Categories</target>
-            </trans-unit>
-            <trans-unit id="10">
-                <source>nav.authors</source>
-                <target>Authors</target>
-            </trans-unit>
-            <trans-unit id="11">
-                <source>author.labels.name</source>
-                <target>Name</target>
-            </trans-unit>
-            <trans-unit id="12">
-                <source>author.labels.numberOfQuestions</source>
-                <target># of questions</target>
             </trans-unit>
             <trans-unit id="13">
                 <source>questions.labels.content</source>

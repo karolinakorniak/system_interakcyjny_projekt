@@ -34,9 +34,6 @@
                     <li>
                         <a href="{{ url('category_index') }}" class="nav-link">{{ 'nav.categories' | trans }}</a>
                     </li>
-                    <li>
-                        <a href="{{ url('authors_index') }}" class="nav-link">{{ 'nav.authors' | trans }}</a>
-                    </li>
                 </ul>
             </div>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
