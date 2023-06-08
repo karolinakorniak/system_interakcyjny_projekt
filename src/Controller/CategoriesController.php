@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\CategoryRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\CategoryServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,13 +11,25 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route("/categories")]
 class CategoriesController extends AbstractController
 {
-    #[Route('/', name: 'category_index')]
-    public function index(Request $request, CategoryRepository $repository, PaginatorInterface $paginator): Response
+    /**
+     * Category Service
+     */
+    private CategoryServiceInterface $categoryService;
+
+    /**
+     * @param CategoryServiceInterface $categoryService
+     */
+    public function __construct(CategoryServiceInterface $categoryService)
     {
-        $pagination = $paginator->paginate(
-            $repository->findAll(),
+        $this->categoryService = $categoryService;
+    }
+
+
+    #[Route('/', name: 'category_index')]
+    public function index(Request $request): Response
+    {
+        $pagination = $this->categoryService->getPaginatedList(
             $request->query->getInt('page', 1),
-            CategoryRepository::PAGINATOR_ITEMS_PER_PAGE,
         );
 
         return $this->render(
