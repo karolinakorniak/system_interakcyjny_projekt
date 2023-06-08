@@ -98,6 +98,14 @@
                 <source>questions.in_category</source>
                 <target>Questions in %category% category</target>
             </trans-unit>
+            <trans-unit id="18">
+                <source>action_logout</source>
+                <target>Log out</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>action_login</source>
+                <target>Log in</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

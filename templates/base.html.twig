@@ -39,6 +39,16 @@
                     </li>
                 </ul>
             </div>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div>{{ app.user.getUserData().name }}</div>
+                <div>
+                    <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
+                </div>
+            {% else %}
+                <div>
+                    <a href="{{ url('app_login') }}">{{ 'action_login'|trans }}</a>
+                </div>
+            {% endif %}
         </div>
     </nav>
 </div>
