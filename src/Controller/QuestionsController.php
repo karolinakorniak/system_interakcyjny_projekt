@@ -2,10 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Question;
-use App\Repository\CategoryRepository;
-use App\Repository\QuestionRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\QuestionServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,13 +13,25 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route("/questions")]
 class QuestionsController extends AbstractController
 {
-    #[Route('/', name: 'question_index')]
-    public function index(Request $request, QuestionRepository $repository, PaginatorInterface $paginator): Response
+    /**
+     * Question Service
+     */
+    private QuestionServiceInterface $questionService;
+
+    /**
+     * @param QuestionServiceInterface $questionService
+     */
+    public function __construct(QuestionServiceInterface $questionService)
     {
-        $pagination = $paginator->paginate(
-            $repository->queryAll(),
-            $request->query->getInt('page', 1),
-            QuestionRepository::PAGINATOR_ITEMS_PER_PAGE,
+        $this->questionService = $questionService;
+    }
+
+
+    #[Route('/', name: 'question_index')]
+    public function index(Request $request): Response
+    {
+        $pagination = $this->questionService->getPaginatedList(
+            $request->query->getInt('page', 1)
         );
 
         return $this->render(
@@ -38,20 +49,15 @@ class QuestionsController extends AbstractController
         );
     }
 
-    #[Route('/byCategory/{categorySlug}', name: "question_by_category")]
-    public function byCategory(Request            $request,
-                               QuestionRepository $questionRepository,
-                               CategoryRepository $categoryRepository,
-                               PaginatorInterface $paginator,
-                               string             $categorySlug): Response
+    #[Route('/byCategory/{slug}', name: "question_by_category")]
+    public function byCategory(Request  $request,
+                               string   $slug,
+                               Category $category): Response
     {
-        $pagination = $paginator->paginate(
-            $questionRepository->queryByCategorySlug($categorySlug),
+        $pagination = $this->questionService->getPaginatedListByCategory(
             $request->query->getInt('page', 1),
-            QuestionRepository::PAGINATOR_ITEMS_PER_PAGE,
+            $slug
         );
-
-        $category = $categoryRepository->findOneBy(["slug" => $categorySlug]);
 
         return $this->render(
             'questions/index.html.twig',

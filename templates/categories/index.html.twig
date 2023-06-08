@@ -22,7 +22,7 @@
                     <td>{{ category.name }}</td>
                     <td>{{ category.author.getUserData().name }}</td>
                     <td>{{ category.questions.count() }}</td>
-                    <td><a href="{{ url('question_by_category', {categorySlug: category.slug}) }}">Questions</a></td>
+                    <td><a href="{{ url('question_by_category', {slug: category.slug}) }}">Questions</a></td>
                 </tr>
             {% endfor %}
             </tbody>
