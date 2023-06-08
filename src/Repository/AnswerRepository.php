@@ -21,13 +21,10 @@ class AnswerRepository extends ServiceEntityRepository
         parent::__construct($registry, Answer::class);
     }
 
-    public function save(Answer $entity, bool $flush = false): void
+    public function save(Answer $entity): void
     {
         $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->getEntityManager()->flush();
     }
 
     public function remove(Answer $entity, bool $flush = false): void

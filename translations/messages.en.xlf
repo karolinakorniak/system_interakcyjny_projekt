@@ -106,6 +106,30 @@
                 <source>action_login</source>
                 <target>Log in</target>
             </trans-unit>
+            <trans-unit id="20">
+                <source>questions.answer.title</source>
+                <target>Answer %questionTitle%</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>action.answer</source>
+                <target>Answer</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>action.back</source>
+                <target>Back</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>answer.labels.username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>answer.labels.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>answer.labels.content</source>
+                <target>Content</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

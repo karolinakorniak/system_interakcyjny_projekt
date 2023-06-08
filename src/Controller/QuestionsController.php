@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Answer;
 use App\Entity\Category;
 use App\Entity\Question;
+use App\Form\Type\AnswerType;
 use App\Service\QuestionServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -63,6 +65,35 @@ class QuestionsController extends AbstractController
             'questions/index.html.twig',
             ['pagination' => $pagination, 'category' => $category]
         );
+    }
 
+    /**
+     * Create action.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return Response HTTP response
+     */
+    #[Route(
+        '/{slug}/addAnswer',
+        name: 'add_answer',
+        methods: 'GET|POST',
+    )]
+    public function create(Request $request, Question $question, $slug): Response
+    {
+        $answer = new Answer();
+        $form = $this->createForm(AnswerType::class, $answer);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->questionService->saveAnswer($answer, $question);
+
+            return $this->redirectToRoute('single_question', ['slug' => $slug]);
+        }
+
+        return $this->render(
+            'questions/addAnswer.html.twig',
+            ['form' => $form->createView(), 'question' => $question]
+        );
     }
 }
