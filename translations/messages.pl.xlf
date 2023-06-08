@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="home.welcome">
+                <source>home.welcome</source>
+                <target>Witaj!</target>
+            </trans-unit>
+            <trans-unit id="questions.title">
+                <source>questions.title</source>
+                <target>Pytania</target>
+            </trans-unit>
+            <trans-unit id="categories.title">
+                <source>categories.title</source>
+                <target>Kategorie</target>
+            </trans-unit>
+            <trans-unit id="nav.questions">
+                <source>nav.questions</source>
+                <target>Pytania</target>
+            </trans-unit>
+            <trans-unit id="nav.categories">
+                <source>nav.categories</source>
+                <target>Kategorie</target>
+            </trans-unit>
+            <trans-unit id="0">
+                <source>questions.labels.title</source>
+                <target>Tytuł</target>
+            </trans-unit>
+            <trans-unit id="1">
+                <source>questions.labels.answerCount</source>
+                <target>Liczba odpowiedzi</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>questions.labels.authorName</source>
+                <target>Zadane przez</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>questions.labels.created</source>
+                <target>Stworzone</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>questions.labels.lastModified</source>
+                <target>Edytowane</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>message.empty_list</source>
+                <target>Nic nie znaleziono</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>category.labels.name</source>
+                <target>Nazwa</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>category.labels.authorName</source>
+                <target>Autor</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>category.labels.numberOfQuestions</source>
+                <target>Liczba pytań</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>questions.labels.categories</source>
+                <target>Kategorie</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>questions.labels.content</source>
+                <target>Treść</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>answers.title</source>
+                <target>Odpowiedzi</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>answers.header</source>
+                <target>%username% odpowiedzial %date%</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>labels.actions</source>
+                <target>Akcje</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>questions.in_category</source>
+                <target>Pytania w kategorii %category%</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>action_logout</source>
+                <target>Wyloguj</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>action_login</source>
+                <target>Zaloguj</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>questions.answer.title</source>
+                <target>Odpowiedz %questionTitle%</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>action.answer</source>
+                <target>Odpowiedz</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>action.back</source>
+                <target>Wróć</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>answer.labels.username</source>
+                <target>Nick</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>answer.labels.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>answer.labels.content</source>
+                <target>Treść</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
