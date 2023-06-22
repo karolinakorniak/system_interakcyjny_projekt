@@ -126,6 +126,14 @@
                 <source>questions.new</source>
                 <target>Dodaj pytanie</target>
             </trans-unit>
+            <trans-unit id="30">
+                <source>questions.created</source>
+                <target>Twoje pytanie zostało dodane</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>answer.created</source>
+                <target>Twoja odpowiedź została dodana</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

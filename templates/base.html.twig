@@ -50,6 +50,7 @@
     </nav>
 </div>
 <main role="main" class="container-fluid">
+    {% include 'default/_flash_messages.html.twig' %}
     {% block body %}{% endblock %}
 </main>
 {% block javascripts %}

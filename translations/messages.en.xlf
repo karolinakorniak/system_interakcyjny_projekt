@@ -126,6 +126,14 @@
                 <source>questions.new</source>
                 <target>Create new</target>
             </trans-unit>
+            <trans-unit id="30">
+                <source>questions.created</source>
+                <target>Your question was added</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>answer.created</source>
+                <target>Your answer was added</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route("/questions")]
 class QuestionsController extends AbstractController
@@ -22,11 +23,19 @@ class QuestionsController extends AbstractController
     private QuestionServiceInterface $questionService;
 
     /**
+     * Translator.
+     *
+     * @var TranslatorInterface
+     */
+    private TranslatorInterface $translator;
+
+    /**
      * @param QuestionServiceInterface $questionService
      */
-    public function __construct(QuestionServiceInterface $questionService)
+    public function __construct(QuestionServiceInterface $questionService, TranslatorInterface $translator)
     {
         $this->questionService = $questionService;
+        $this->translator = $translator;
     }
 
 
@@ -65,7 +74,12 @@ class QuestionsController extends AbstractController
             $question->setAuthor($this->getUser());
             $this->questionService->saveQuestion($question);
 
-            return $this->redirectToRoute('single_question', ['slug' => $question->getSlug()]);
+            $this->addFlash(
+                'success',
+                $this->translator->trans('questions.created')
+            );
+
+            return $this->redirectToRoute('question_index');
         }
 
         return $this->render(
@@ -119,6 +133,11 @@ class QuestionsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->questionService->saveAnswer($answer, $question);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('answer.created')
+            );
 
             return $this->redirectToRoute('single_question', ['slug' => $slug]);
         }
