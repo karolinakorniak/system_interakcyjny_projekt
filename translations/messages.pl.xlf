@@ -134,6 +134,22 @@
                 <source>answer.created</source>
                 <target>Twoja odpowiedź została dodana</target>
             </trans-unit>
+            <trans-unit id="32">
+                <source>category.created</source>
+                <target>Dodano kategorię</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>action.category.create</source>
+                <target>Dodaj</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>categories.create.title</source>
+                <target>Nowa kategoria</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>categories.new</source>
+                <target>Dodaj kategorie</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

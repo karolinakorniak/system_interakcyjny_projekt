@@ -6,6 +6,9 @@
 
 {% block body %}
     <h1>{{ 'categories.title'|trans }}</h1>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class="btn btn-primary" href="{{ url('add_category') }}">{{ 'categories.new' | trans }}</a>
+    {% endif %}
     {% if pagination is defined and pagination.items|length %}
         <table class="table table-striped">
             <thead>

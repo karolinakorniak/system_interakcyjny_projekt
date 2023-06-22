@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Category;
 use App\Repository\CategoryRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -40,5 +41,10 @@ class CategoryService implements CategoryServiceInterface
             $page,
             CategoryRepository::PAGINATOR_ITEMS_PER_PAGE,
         );
+    }
+
+    public function saveCategory(Category $category): void
+    {
+        $this->categoryRepository->save($category);
     }
 }

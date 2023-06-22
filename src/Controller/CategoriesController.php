@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use App\Form\Type\CategoryType;
 use App\Service\CategoryServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route("/categories")]
 class CategoriesController extends AbstractController
@@ -17,11 +20,17 @@ class CategoriesController extends AbstractController
     private CategoryServiceInterface $categoryService;
 
     /**
+     * TranslatorInterface
+     */
+    private TranslatorInterface $translator;
+
+    /**
      * @param CategoryServiceInterface $categoryService
      */
-    public function __construct(CategoryServiceInterface $categoryService)
+    public function __construct(CategoryServiceInterface $categoryService, TranslatorInterface $translator)
     {
         $this->categoryService = $categoryService;
+        $this->translator = $translator;
     }
 
 
@@ -36,5 +45,31 @@ class CategoriesController extends AbstractController
             'categories/index.html.twig',
             ['pagination' => $pagination]
         );
+    }
+
+    #[Route('/create', name: 'add_category')]
+    public function create(Request $request): Response
+    {
+        $category = new Category();
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $category->setAuthor($this->getUser());
+            $this->categoryService->saveCategory($category);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('category.created')
+            );
+
+            return $this->redirectToRoute('category_index');
+        }
+
+        return $this->render(
+            'categories/addCategory.html.twig',
+            ['form' => $form->createView()]
+        );
+
     }
 }
