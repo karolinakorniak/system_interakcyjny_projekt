@@ -43,8 +43,9 @@
                     <td>{{ question.author.getUserData().name }}</td>
                     <td>{{ question.getCreatedDate()|format_date('relative_long') }}</td>
                     <td>{{ question.getLastModifiedDate()|format_date('relative_long') }}</td>
-                    <td>
+                    <td class="hstack gap-3">
                         <a href="{{ url('edit_question', {'slug': question.slug}) }}">{{ 'actions.edit' | trans }}</a>
+                        <a href="{{ url('delete_question', {'slug': question.slug}) }}">{{ 'actions.delete' | trans }}</a>
                     </td>
                 </tr>
             {% endfor %}

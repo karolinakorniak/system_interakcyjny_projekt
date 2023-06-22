@@ -9,6 +9,7 @@ use App\Form\Type\AnswerType;
 use App\Form\Type\QuestionType;
 use App\Service\QuestionServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -122,6 +123,49 @@ class QuestionsController extends AbstractController
         return $this->render(
             'questions/editQuestion.html.twig',
             ['form' => $form->createView()]
+        );
+    }
+
+    /**
+     * Delete action.
+     *
+     * @param Request $request HTTP request
+     * @param Question $question Question entity
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/{slug}/delete',
+        name: 'delete_question',
+        methods: 'GET|DELETE')]
+    public function delete(Request $request, Question $question): Response
+    {
+        $form = $this->createForm(
+            FormType::class,
+            $question,
+            [
+                'method' => 'DELETE',
+                'action' => $this->generateUrl('delete_question', ['slug' => $question->getSlug()]),
+            ]
+        );
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->questionService->deleteQuestion($question);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('questions.deleted')
+            );
+
+            return $this->redirectToRoute('question_index');
+        }
+
+        return $this->render(
+            'questions/delete.html.twig',
+            [
+                'form' => $form->createView(),
+                'question' => $question
+            ]
         );
     }
 

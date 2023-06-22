@@ -182,6 +182,26 @@
                 <source>category.questions</source>
                 <target>Pytania</target>
             </trans-unit>
+            <trans-unit id="44">
+                <source>questions.delete.title</source>
+                <target>Usuń pytanie</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>questions.delete.submit</source>
+                <target>Usuń</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>actions.delete</source>
+                <target>Usuń</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>questions.deleted</source>
+                <target>Pytanie zostało usunięte</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>questions.delete.header</source>
+                <target>Usuń %title%</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

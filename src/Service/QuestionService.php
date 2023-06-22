@@ -77,9 +77,19 @@ class QuestionService implements QuestionServiceInterface
         $this->answerRepository->save($answer);
     }
 
-
+    /**
+     * @inheritDoc
+     */
     public function saveQuestion(Question $question): void
     {
         $this->questionRepository->save($question);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function deleteQuestion(Question $question): void
+    {
+        $this->questionRepository->remove($question);
     }
 }

@@ -41,4 +41,11 @@ interface QuestionServiceInterface
      * @param Question $question Entity to save
      */
     public function saveQuestion(Question $question): void;
+
+    /**
+     * Delete a question.
+     *
+     * @param Question $question
+     */
+    public function deleteQuestion(Question $question): void;
 }
