@@ -23,6 +23,7 @@
                 <th>{{ 'questions.labels.authorName' | trans }}</th>
                 <th>{{ 'questions.labels.created' | trans }}</th>
                 <th>{{ 'questions.labels.lastModified' | trans }}</th>
+                <th>{{ 'labels.actions' | trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -42,6 +43,9 @@
                     <td>{{ question.author.getUserData().name }}</td>
                     <td>{{ question.getCreatedDate()|format_date('relative_long') }}</td>
                     <td>{{ question.getLastModifiedDate()|format_date('relative_long') }}</td>
+                    <td>
+                        <a href="{{ url('edit_question', {'slug': question.slug}) }}">{{ 'actions.edit' | trans }}</a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

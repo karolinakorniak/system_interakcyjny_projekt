@@ -150,6 +150,22 @@
                 <source>categories.new</source>
                 <target>Dodaj kategorie</target>
             </trans-unit>
+            <trans-unit id="36">
+                <source>questions.edited</source>
+                <target>Pytanie zostało zmienione</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>questions.edit.title</source>
+                <target>Edytuj pytanie</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>questions.edit.submit</source>
+                <target>Zapisz</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>actions.edit</source>
+                <target>Edytuj</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

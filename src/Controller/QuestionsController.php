@@ -88,6 +88,43 @@ class QuestionsController extends AbstractController
         );
     }
 
+    /**
+     * Edit a question.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return Response HTTP response
+     */
+    #[Route(
+        '/{slug}/edit',
+        name: 'edit_question',
+        methods: 'GET|PUT',
+    )]
+    public function editQuestion(Request $request, Question $question): Response
+    {
+        $form = $this->createForm(QuestionType::class, $question, [
+            'method' => 'PUT',
+            'action' => $this->generateUrl('edit_question', ['slug' => $question->getSlug()])
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->questionService->saveQuestion($question);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('questions.edited')
+            );
+
+            return $this->redirectToRoute('question_index');
+        }
+
+        return $this->render(
+            'questions/editQuestion.html.twig',
+            ['form' => $form->createView()]
+        );
+    }
+
     #[Route('/{slug}', name: 'single_question')]
     public function singleQuestion(Question $question): Response
     {
