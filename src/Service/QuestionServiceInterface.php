@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Entity\Answer;
 use App\Entity\Question;
+use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 interface QuestionServiceInterface
@@ -27,10 +28,17 @@ interface QuestionServiceInterface
     public function getPaginatedListByCategory(int $page, string $categorySlug): PaginationInterface;
 
     /**
-     * Save entity.
+     * Save an answer to a question.
      *
-     * @param Answer $answer Answer entity
+     * @param Answer $answer Answer entity to save
      * @param Question $question Question to add answer to
      */
     public function saveAnswer(Answer $answer, Question $question): void;
+
+    /**
+     * Save a question.
+     *
+     * @param Question $question Entity to save
+     */
+    public function saveQuestion(Question $question): void;
 }

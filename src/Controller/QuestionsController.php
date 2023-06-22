@@ -6,6 +6,7 @@ use App\Entity\Answer;
 use App\Entity\Category;
 use App\Entity\Question;
 use App\Form\Type\AnswerType;
+use App\Form\Type\QuestionType;
 use App\Service\QuestionServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,6 +43,37 @@ class QuestionsController extends AbstractController
         );
     }
 
+    /**
+     * Create a question.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return Response HTTP response
+     */
+    #[Route(
+        '/create',
+        name: 'add_question',
+        methods: 'GET|POST',
+    )]
+    public function addQuestion(Request $request): Response
+    {
+        $question = new Question();
+        $form = $this->createForm(QuestionType::class, $question);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $question->setAuthor($this->getUser());
+            $this->questionService->saveQuestion($question);
+
+            return $this->redirectToRoute('single_question', ['slug' => $question->getSlug()]);
+        }
+
+        return $this->render(
+            'questions/addQuestion.html.twig',
+            ['form' => $form->createView()]
+        );
+    }
+
     #[Route('/{slug}', name: 'single_question')]
     public function singleQuestion(Question $question): Response
     {
@@ -68,7 +100,7 @@ class QuestionsController extends AbstractController
     }
 
     /**
-     * Create action.
+     * Add answer to a question.
      *
      * @param Request $request HTTP request
      *
@@ -79,7 +111,7 @@ class QuestionsController extends AbstractController
         name: 'add_answer',
         methods: 'GET|POST',
     )]
-    public function create(Request $request, Question $question, $slug): Response
+    public function addAnswer(Request $request, Question $question, $slug): Response
     {
         $answer = new Answer();
         $form = $this->createForm(AnswerType::class, $answer);

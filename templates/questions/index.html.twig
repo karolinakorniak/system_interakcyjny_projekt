@@ -10,6 +10,9 @@
     {% else %}
         <h1>{{ 'questions.title'|trans }}</h1>
     {% endif %}
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class="btn btn-primary" href="{{ url('add_question') }}">{{ 'questions.new' | trans }}</a>
+    {% endif %}
     {% if pagination is defined and pagination.items|length %}
         <table class="table table-striped">
             <thead>

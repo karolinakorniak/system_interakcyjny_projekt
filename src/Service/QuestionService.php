@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Entity\Answer;
 use App\Entity\Question;
+use App\Entity\User;
 use App\Repository\AnswerRepository;
 use App\Repository\QuestionRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -74,5 +75,11 @@ class QuestionService implements QuestionServiceInterface
         $answer->setQuestion($question);
         $answer->setIsDeleted(false);
         $this->answerRepository->save($answer);
+    }
+
+
+    public function saveQuestion(Question $question): void
+    {
+        $this->questionRepository->save($question);
     }
 }

@@ -114,6 +114,18 @@
                 <source>answer.labels.content</source>
                 <target>Treść</target>
             </trans-unit>
+            <trans-unit id="26">
+                <source>questions.create.title</source>
+                <target>Nowe pytanie</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>questions.create.submit</source>
+                <target>Dodaj</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>questions.new</source>
+                <target>Dodaj pytanie</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

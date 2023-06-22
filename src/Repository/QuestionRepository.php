@@ -24,13 +24,10 @@ class QuestionRepository extends ServiceEntityRepository
         parent::__construct($registry, Question::class);
     }
 
-    public function save(Question $entity, bool $flush = false): void
+    public function save(Question $entity): void
     {
         $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->getEntityManager()->flush();
     }
 
     public function remove(Question $entity, bool $flush = false): void
