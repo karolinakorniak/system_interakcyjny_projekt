@@ -25,7 +25,14 @@
                     <td>{{ category.name }}</td>
                     <td>{{ category.author.getUserData().name }}</td>
                     <td>{{ category.questions.count() }}</td>
-                    <td><a href="{{ url('question_by_category', {slug: category.slug}) }}">Questions</a></td>
+                    <td class="hstack gap-3">
+                        <a class="link" href="{{ url('question_by_category', {slug: category.slug}) }}">
+                            {{ 'category.questions' | trans }}
+                        </a>
+                        <a class="link" href="{{ url('edit_category', {slug: category.slug}) }}">
+                            {{ 'actions.edit' | trans }}
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -166,6 +166,22 @@
                 <source>actions.edit</source>
                 <target>Edit</target>
             </trans-unit>
+            <trans-unit id="40">
+                <source>categories.edited</source>
+                <target>Category was edited</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>action.category.edit</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>categories.edit.title</source>
+                <target>Edit category</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>category.questions</source>
+                <target>Questions</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

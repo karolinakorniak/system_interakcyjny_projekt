@@ -166,6 +166,22 @@
                 <source>actions.edit</source>
                 <target>Edytuj</target>
             </trans-unit>
+            <trans-unit id="40">
+                <source>categories.edited</source>
+                <target>Kategoria została zmieniona</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>action.category.edit</source>
+                <target>Zapisz</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>categories.edit.title</source>
+                <target>Edytuj kategorie</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>category.questions</source>
+                <target>Pytania</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
