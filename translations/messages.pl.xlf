@@ -202,6 +202,18 @@
                 <source>questions.delete.header</source>
                 <target>Usuń %title%</target>
             </trans-unit>
+            <trans-unit id="49">
+                <source>category.deleted</source>
+                <target>Kategoria została usunięta</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>categories.delete.title</source>
+                <target>Usuń kategorię</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>categories.delete.header</source>
+                <target>Usuń kategorię %name%</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -43,8 +43,19 @@ class CategoryService implements CategoryServiceInterface
         );
     }
 
+    /**
+     * @inheritDoc
+     */
     public function saveCategory(Category $category): void
     {
         $this->categoryRepository->save($category);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function deleteCategory(Category $category): void
+    {
+        $this->categoryRepository->remove($category);
     }
 }
