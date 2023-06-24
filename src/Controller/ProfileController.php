@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\Type\ChangePasswordType;
+use App\Form\Type\UserType;
 use App\Service\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -65,6 +66,38 @@ class ProfileController extends AbstractController
             [
                 'user' => $user
             ]
+        );
+    }
+
+    #[Route('/edit', name: "edit_profile", methods: "PUT|GET")]
+    public function edit(Request $request): Response
+    {
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
+
+        $form = $this->createForm(UserType::class, $user, [
+            'method' => 'PUT',
+            'action' => $this->generateUrl('edit_profile')
+        ]);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->userService->saveUser($user);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('profile.edited')
+            );
+
+            return $this->redirectToRoute('profile');
+        }
+
+        return $this->render(
+            'profile/edit.html.twig',
+            ['form' => $form->createView()]
         );
     }
 

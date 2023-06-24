@@ -294,6 +294,15 @@
                 <source>profile.labels.oldPassword</source>
                 <target>Obecne hasło</target>
             </trans-unit>
+            <trans-unit id="74">
+                <source>profile.edit.title</source>
+                <target>Edycja profilu</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>profile.labels.userData</source>
+                <target>Dane</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
