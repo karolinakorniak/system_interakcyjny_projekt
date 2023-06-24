@@ -242,6 +242,22 @@
                 <source>actions.markAsBest</source>
                 <target>Wybierz</target>
             </trans-unit>
+            <trans-unit id="59">
+                <source>profile.title</source>
+                <target>Twój profil</target>
+            </trans-unit>
+            <trans-unit id="61">
+                <source>profile.labels.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>profile.labels.name</source>
+                <target>Nazwa</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>profile.labels.description</source>
+                <target>Opis</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
