@@ -44,6 +44,7 @@ class Question
     private Collection $answers;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(onDelete: "SET NULL")]
     private ?Answer $best_answer = null;
 
     #[ORM\ManyToOne(inversedBy: 'questions')]
