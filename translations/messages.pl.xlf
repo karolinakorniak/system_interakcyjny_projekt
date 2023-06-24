@@ -214,6 +214,22 @@
                 <source>categories.delete.header</source>
                 <target>Usuń kategorię %name%</target>
             </trans-unit>
+            <trans-unit id="52">
+                <source>answers.deleted</source>
+                <target>Odpowiedź oznaczona jako usunięta</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>answer.delete.title</source>
+                <target>Usuń odpowiedź</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>answer.delete.header</source>
+                <target>Usunąć odpowiedź od %email%?</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>answer.wasDeleted</source>
+                <target>Ta odpowiedź została usunięta przed admina</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

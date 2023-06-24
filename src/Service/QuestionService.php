@@ -92,4 +92,13 @@ class QuestionService implements QuestionServiceInterface
     {
         $this->questionRepository->remove($question);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function markAnswerAsDeleted(Answer $answer): void
+    {
+        $answer->setIsDeleted(true);
+        $this->answerRepository->save($answer);
+    }
 }

@@ -228,4 +228,47 @@ class QuestionsController extends AbstractController
             ['form' => $form->createView(), 'question' => $question]
         );
     }
+
+    /**
+     * Mark answer as deleted.
+     *
+     * @param Request $request HTTP Request
+     * @param Answer $answer Answer entity
+     * @return Response HTTP Response
+     */
+    #[Route('/answer/{id}',
+        name: "delete_answer",
+        methods: 'DELETE|GET'
+    )]
+    public function markAnswerAsDeleted(Request $request, Answer $answer): Response
+    {
+        $form = $this->createForm(
+            FormType::class,
+            $answer,
+            [
+                'method' => 'DELETE',
+                'action' => $this->generateUrl('delete_answer', ['id' => $answer->getId()]),
+            ]
+        );
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->questionService->markAnswerAsDeleted($answer);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('answers.deleted')
+            );
+
+            return $this->redirectToRoute('single_question', ['slug' => $answer->getQuestion()->getSlug()]);
+        }
+
+        return $this->render(
+            'questions/deleteAnswer.html.twig',
+            [
+                'form' => $form->createView(),
+                'answer' => $answer
+            ]
+        );
+    }
 }

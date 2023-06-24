@@ -37,8 +37,18 @@
     <div class="vstack gap-3 mt-3">
         {% for answer in question.answers %}
             <div class="border rounded-3 p-3">
-                <div>{{ 'answers.header' | trans({'%username%': answer.username, '%date%': answer.date | format_date('short')}) }}</div>
-                <div class="text-wrap text-break">{{ answer.content }}</div>
+                {% if not answer.isDeleted %}
+                    <div>{{ 'answers.header' | trans({'%username%': answer.username, '%date%': answer.date | format_date('short')}) }}</div>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <div class="vstack">
+                            <a class="btn btn-secondary"
+                               href="{{ url('delete_answer', {'id': answer.id}) }}">{{ 'actions.delete' | trans }}</a>
+                        </div>
+                    {% endif %}
+                    <div class="text-wrap text-break">{{ answer.content }}</div>
+                {% else %}
+                    <div>{{ 'answer.wasDeleted' | trans }}</div>
+                {% endif %}
             </div>
         {% endfor %}
     </div>

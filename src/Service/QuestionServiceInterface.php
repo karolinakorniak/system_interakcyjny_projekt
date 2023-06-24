@@ -48,4 +48,11 @@ interface QuestionServiceInterface
      * @param Question $question
      */
     public function deleteQuestion(Question $question): void;
+
+    /**
+     * Mark answer as deleted.
+     *
+     * @param Answer $answer
+     */
+    public function markAnswerAsDeleted(Answer $answer): void;
 }

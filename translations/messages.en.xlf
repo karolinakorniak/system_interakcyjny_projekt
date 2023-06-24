@@ -214,6 +214,22 @@
                 <source>categories.delete.header</source>
                 <target>Delete category %name%</target>
             </trans-unit>
+            <trans-unit id="52">
+                <source>answers.deleted</source>
+                <target>Answer marked as deleted</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>answer.delete.title</source>
+                <target>Delete answer</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>answer.delete.header</source>
+                <target>Delete answer from %email%?</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>answer.wasDeleted</source>
+                <target>This answer was deleted by admin</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
