@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ question.slug }}
+    {{ question.title }}
 {% endblock %}
 
 {% block body %}
     <h1>{{ question.title }}</h1>
-    <div class="container text-center">
+    <div class="vstack gap-2">
         <div class="row">
             <label class="col">{{ 'questions.labels.content' | trans }}:</label>
             <div class="col">{{ question.content }}</div>
@@ -32,24 +32,40 @@
             <div class="col">{{ question.lastModifiedDate|date('Y/m/d') }}</div>
         </div>
     </div>
+    {% if question.bestAnswer %}
+        <h3>{{ 'answers.best.title' | trans }}</h3>
+        <div class="border rounded-3 p-3">
+            {{ 'answers.header' | trans({'%username%': question.bestAnswer.username, '%date%': question.bestAnswer.date | format_date('short')}) }}
+            <div class="text-wrap text-break">{{ question.bestAnswer.content }}</div>
+        </div>
+    {% endif %}
     <h3>{{ 'answers.title' | trans }}</h3>
     <a class="btn btn-primary" href="{{ url('add_answer', {slug:question.slug}) }}">{{ 'action.answer' | trans }}</a>
     <div class="vstack gap-3 mt-3">
         {% for answer in question.answers %}
-            <div class="border rounded-3 p-3">
-                {% if not answer.isDeleted %}
-                    <div>{{ 'answers.header' | trans({'%username%': answer.username, '%date%': answer.date | format_date('short')}) }}</div>
-                    {% if is_granted("ROLE_ADMIN") %}
-                        <div class="vstack">
-                            <a class="btn btn-secondary"
-                               href="{{ url('delete_answer', {'id': answer.id}) }}">{{ 'actions.delete' | trans }}</a>
-                        </div>
+            {% if question.bestAnswer is null or answer.id != question.bestAnswer.id %}
+                <div class="border rounded-3 p-3">
+                    {% if not answer.isDeleted %}
+                        <div>{{ 'answers.header' | trans({'%username%': answer.username, '%date%': answer.date | format_date('short')}) }}</div>
+                        <div class="text-wrap text-break">{{ answer.content }}</div>
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <div class="hstack gap-3">
+                                <a class="btn btn-secondary"
+                                   href="{{ url('delete_answer', {'id': answer.id}) }}">
+                                    {{ 'actions.delete' | trans }}
+                                </a>
+                                <form method="post" action="{{ url('mark_best_answer', {slug: question.slug}) }}">
+                                    <input hidden name="_method" value="PUT"/>
+                                    <input hidden name="answer_id" value="{{ answer.id }}">
+                                    <button type="submit" class="btn btn-secondary">{{ 'actions.markAsBest' | trans }}</button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div>{{ 'answer.wasDeleted' | trans }}</div>
                     {% endif %}
-                    <div class="text-wrap text-break">{{ answer.content }}</div>
-                {% else %}
-                    <div>{{ 'answer.wasDeleted' | trans }}</div>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

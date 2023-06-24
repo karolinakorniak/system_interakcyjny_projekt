@@ -230,6 +230,18 @@
                 <source>answer.wasDeleted</source>
                 <target>This answer was deleted by admin</target>
             </trans-unit>
+            <trans-unit id="56">
+                <source>answer.markedAsBest</source>
+                <target>Answer was marked as best</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>answers.best.title</source>
+                <target>Best answer:</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>actions.markAsBest</source>
+                <target>Mark as best</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

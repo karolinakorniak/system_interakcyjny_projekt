@@ -101,4 +101,14 @@ class QuestionService implements QuestionServiceInterface
         $answer->setIsDeleted(true);
         $this->answerRepository->save($answer);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function markAnswerAsBest(Question $question, int $id): void
+    {
+        $answer = $this->answerRepository->find($id);
+        $question->setBestAnswer($answer);
+        $this->questionRepository->save($question);
+    }
 }

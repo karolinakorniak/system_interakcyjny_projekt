@@ -230,6 +230,29 @@ class QuestionsController extends AbstractController
     }
 
     /**
+     * Mark given answer as best for this question
+     *
+     * @return Response HTTP response
+     */
+    #[Route(
+        '/{slug}/bestAnswer/',
+        name: 'mark_best_answer',
+        methods: 'PUT',
+    )]
+    public function markAnswerAsBest(Request $request, Question $question): Response
+    {
+        $answerId = $request->get("answer_id");
+        $this->questionService->markAnswerAsBest($question, $answerId);
+
+        $this->addFlash(
+            'success',
+            $this->translator->trans('answer.markedAsBest')
+        );
+
+        return $this->redirectToRoute('single_question', ['slug' => $question->getSlug()]);
+    }
+
+    /**
      * Mark answer as deleted.
      *
      * @param Request $request HTTP Request

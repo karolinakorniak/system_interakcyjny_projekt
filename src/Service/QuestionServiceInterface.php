@@ -55,4 +55,12 @@ interface QuestionServiceInterface
      * @param Answer $answer
      */
     public function markAnswerAsDeleted(Answer $answer): void;
+
+    /**
+     * Mark answer as best for given question.
+     *
+     * @param Question $question Question entity.
+     * @param int $id Id of answer to be marked as best.
+     */
+    public function markAnswerAsBest(Question $question, int $id): void;
 }

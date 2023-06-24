@@ -230,6 +230,18 @@
                 <source>answer.wasDeleted</source>
                 <target>Ta odpowiedź została usunięta przed admina</target>
             </trans-unit>
+            <trans-unit id="56">
+                <source>answer.markedAsBest</source>
+                <target>Odpowiedź oznaczona jako najlepsza</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>answers.best.title</source>
+                <target>Najlepsza odpowiedź</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>actions.markAsBest</source>
+                <target>Wybierz</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
