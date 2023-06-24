@@ -6,6 +6,9 @@
 
 {% block body %}
     <h1>{{ 'profile.title'|trans }}</h1>
+    <a class="btn btn-secondary" href="{{ url('change_password') }}">
+        {{ 'profile.changePassword' | trans }}
+    </a>
     <div class="vstack gap-2">
         <div class="row">
             <label class="col">{{ 'profile.labels.email' | trans }}:</label>

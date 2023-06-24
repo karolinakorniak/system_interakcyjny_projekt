@@ -258,6 +258,42 @@
                 <source>profile.labels.description</source>
                 <target>Opis</target>
             </trans-unit>
+            <trans-unit id="65">
+                <source>profile.incorrectPassword</source>
+                <target>Niepoprawne hasło</target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>profile.passwordMismatch</source>
+                <target>Hasła nie są takie same</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>profile.passwordUpdated</source>
+                <target>Twoje hasło zostało zmienione</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>profile.changePassword</source>
+                <target>Zmień hasło</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>profile.changePassword.title</source>
+                <target>Zmiana hasła</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>action.save</source>
+                <target>Zapisz</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>profile.labels.newPassword</source>
+                <target>Nowe hasło</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>profile.labels.confirmPassword</source>
+                <target>Potwierdź hasło</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>profile.labels.oldPassword</source>
+                <target>Obecne hasło</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
