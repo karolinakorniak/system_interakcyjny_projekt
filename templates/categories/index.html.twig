@@ -29,12 +29,16 @@
                         <a class="link" href="{{ url('question_by_category', {slug: category.slug}) }}">
                             {{ 'category.questions' | trans }}
                         </a>
-                        <a class="link" href="{{ url('edit_category', {slug: category.slug}) }}">
-                            {{ 'actions.edit' | trans }}
-                        </a>
-                        <a class="link" href="{{ url('delete_category', {slug: category.slug}) }}">
-                            {{ 'actions.delete' | trans }}
-                        </a>
+                        {% if is_granted("EDIT", category) %}
+                            <a class="link" href="{{ url('edit_category', {slug: category.slug}) }}">
+                                {{ 'actions.edit' | trans }}
+                            </a>
+                        {% endif %}
+                        {% if is_granted("DELETE", category) %}
+                            <a class="link" href="{{ url('delete_category', {slug: category.slug}) }}">
+                                {{ 'actions.delete' | trans }}
+                            </a>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}

@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route("/categories")]
@@ -60,6 +61,7 @@ class CategoriesController extends AbstractController
         name: 'edit_category',
         methods: 'GET|PUT',
     )]
+    #[IsGranted("EDIT", subject: 'category')]
     public function editQuestion(Request $request, Category $category): Response
     {
         $form = $this->createForm(CategoryType::class, $category, [
@@ -96,6 +98,7 @@ class CategoriesController extends AbstractController
     #[Route('/{slug}/delete',
         name: 'delete_category',
         methods: 'GET|DELETE')]
+    #[IsGranted("DELETE", subject: 'category')]
     public function delete(Request $request, Category $category): Response
     {
         $form = $this->createForm(
