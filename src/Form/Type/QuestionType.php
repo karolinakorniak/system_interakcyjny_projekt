@@ -10,6 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class QuestionType
+ */
 class QuestionType extends AbstractType
 {
     /**
@@ -18,13 +21,14 @@ class QuestionType extends AbstractType
     private CategoriesDataTransformer $categoriesDataTransformer;
 
     /**
+     * Constructor.
+     *
      * @param CategoriesDataTransformer $categoriesDataTransformer
      */
     public function __construct(CategoriesDataTransformer $categoriesDataTransformer)
     {
         $this->categoriesDataTransformer = $categoriesDataTransformer;
     }
-
 
     /**
      * Builds the form.

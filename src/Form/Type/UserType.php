@@ -13,6 +13,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class UserType.
+ */
 class UserType extends AbstractType
 {
     /**
@@ -38,9 +41,10 @@ class UserType extends AbstractType
             ])->add(
             "userData",
             UserDataType::class,
-            [
-                'label' => 'profile.labels.userData'
-            ]);
+                [
+                    'label' => 'profile.labels.userData'
+                ]
+        );
     }
 
     /**
