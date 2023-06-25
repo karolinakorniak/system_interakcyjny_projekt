@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route("/questions")]
@@ -101,6 +102,7 @@ class QuestionsController extends AbstractController
         name: 'edit_question',
         methods: 'GET|PUT',
     )]
+    #[IsGranted('EDIT', subject: 'question')]
     public function editQuestion(Request $request, Question $question): Response
     {
         $form = $this->createForm(QuestionType::class, $question, [
@@ -137,6 +139,7 @@ class QuestionsController extends AbstractController
     #[Route('/{slug}/delete',
         name: 'delete_question',
         methods: 'GET|DELETE')]
+    #[IsGranted("DELETE", subject: 'question')]
     public function delete(Request $request, Question $question): Response
     {
         $form = $this->createForm(
@@ -239,6 +242,7 @@ class QuestionsController extends AbstractController
         name: 'mark_best_answer',
         methods: 'PUT',
     )]
+    #[IsGranted("EDIT", subject: 'question')]
     public function markAnswerAsBest(Request $request, Question $question): Response
     {
         $answerId = $request->get("answer_id");

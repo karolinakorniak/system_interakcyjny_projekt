@@ -32,6 +32,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/questions/create, roles: ROLE_ADMIN }
+         - { path: ^/questions/[a-zA-Z0-9\-]+/edit, roles: ROLE_ADMIN }
+         - { path: ^/questions/[a-zA-Z0-9\-]+/delete, roles: ROLE_ADMIN }
          - { path: ^/profile, roles: ROLE_ADMIN }
 
 when@test:

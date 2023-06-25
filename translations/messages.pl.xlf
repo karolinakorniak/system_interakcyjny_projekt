@@ -302,6 +302,10 @@
                 <source>profile.labels.userData</source>
                 <target>Dane</target>
             </trans-unit>
+            <trans-unit id="76">
+                <source>action.none</source>
+                <target>Brak</target>
+            </trans-unit>
 
         </body>
     </file>
