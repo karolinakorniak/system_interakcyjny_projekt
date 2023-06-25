@@ -118,10 +118,6 @@
                 <source>questions.create.title</source>
                 <target>New question</target>
             </trans-unit>
-            <trans-unit id="28">
-                <source>questions.create.submit</source>
-                <target>Create</target>
-            </trans-unit>
             <trans-unit id="29">
                 <source>questions.new</source>
                 <target>Create new</target>
@@ -137,10 +133,6 @@
             <trans-unit id="32">
                 <source>category.created</source>
                 <target>Category was added</target>
-            </trans-unit>
-            <trans-unit id="33">
-                <source>action.category.create</source>
-                <target>Create</target>
             </trans-unit>
             <trans-unit id="34">
                 <source>categories.create.title</source>
@@ -158,10 +150,6 @@
                 <source>questions.edit.title</source>
                 <target>Edit question</target>
             </trans-unit>
-            <trans-unit id="38">
-                <source>questions.edit.submit</source>
-                <target>Save</target>
-            </trans-unit>
             <trans-unit id="39">
                 <source>actions.edit</source>
                 <target>Edit</target>
@@ -170,10 +158,6 @@
                 <source>categories.edited</source>
                 <target>Category was edited</target>
             </trans-unit>
-            <trans-unit id="41">
-                <source>action.category.edit</source>
-                <target>Save</target>
-            </trans-unit>
             <trans-unit id="42">
                 <source>categories.edit.title</source>
                 <target>Edit category</target>
@@ -181,14 +165,6 @@
             <trans-unit id="43">
                 <source>category.questions</source>
                 <target>Questions</target>
-            </trans-unit>
-            <trans-unit id="44">
-                <source>questions.delete.title</source>
-                <target>Delete question</target>
-            </trans-unit>
-            <trans-unit id="45">
-                <source>questions.delete.submit</source>
-                <target>Delete</target>
             </trans-unit>
             <trans-unit id="46">
                 <source>actions.delete</source>
@@ -206,10 +182,6 @@
                 <source>category.deleted</source>
                 <target>Category was deleted</target>
             </trans-unit>
-            <trans-unit id="50">
-                <source>categories.delete.title</source>
-                <target>Delete category</target>
-            </trans-unit>
             <trans-unit id="51">
                 <source>categories.delete.header</source>
                 <target>Delete category %name%</target>
@@ -217,10 +189,6 @@
             <trans-unit id="52">
                 <source>answers.deleted</source>
                 <target>Answer marked as deleted</target>
-            </trans-unit>
-            <trans-unit id="53">
-                <source>answer.delete.title</source>
-                <target>Delete answer</target>
             </trans-unit>
             <trans-unit id="54">
                 <source>answer.delete.header</source>
