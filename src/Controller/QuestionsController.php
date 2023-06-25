@@ -84,7 +84,7 @@ class QuestionsController extends AbstractController
         }
 
         return $this->render(
-            'questions/addQuestion.html.twig',
+            'questions/add.html.twig',
             ['form' => $form->createView()]
         );
     }
@@ -121,7 +121,7 @@ class QuestionsController extends AbstractController
         }
 
         return $this->render(
-            'questions/editQuestion.html.twig',
+            'questions/edit.html.twig',
             ['form' => $form->createView()]
         );
     }
@@ -224,7 +224,7 @@ class QuestionsController extends AbstractController
         }
 
         return $this->render(
-            'questions/addAnswer.html.twig',
+            'answers/add.html.twig',
             ['form' => $form->createView(), 'question' => $question]
         );
     }
@@ -287,7 +287,7 @@ class QuestionsController extends AbstractController
         }
 
         return $this->render(
-            'questions/deleteAnswer.html.twig',
+            'answers/delete.html.twig',
             [
                 'form' => $form->createView(),
                 'answer' => $answer
