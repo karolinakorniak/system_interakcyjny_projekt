@@ -30,4 +30,11 @@ interface CategoryServiceInterface
      * @return void
      */
     public function deleteCategory(Category $category): void;
+
+    /**
+     * Find by name.
+     * @param string $name Name to search for
+     * @return Category|null Category entity
+     */
+    public function findOneByName(string $name): ?Category;
 }

@@ -2,9 +2,8 @@
 
 namespace App\Form\Type;
 
-use App\Entity\Category;
 use App\Entity\Question;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Form\DataTransformer\CategoriesDataTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -13,6 +12,20 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class QuestionType extends AbstractType
 {
+    /**
+     * Categories data transformer.
+     */
+    private CategoriesDataTransformer $categoriesDataTransformer;
+
+    /**
+     * @param CategoriesDataTransformer $categoriesDataTransformer
+     */
+    public function __construct(CategoriesDataTransformer $categoriesDataTransformer)
+    {
+        $this->categoriesDataTransformer = $categoriesDataTransformer;
+    }
+
+
     /**
      * Builds the form.
      *
@@ -42,13 +55,12 @@ class QuestionType extends AbstractType
                 'attr' => ['max_length' => 400]
             ])->add(
                 "categories",
-            EntityType::class, [
-                'class' => Category::class,
-                'choice_label' => 'name',
-                'multiple' => true,
-                'expanded' => true,
-                'label' => 'questions.labels.categories'
+            TextType::class, [
+                'label' => 'questions.labels.categories',
+                'required' => false
             ]);
+
+        $builder->get("categories")->addModelTransformer($this->categoriesDataTransformer);
     }
 
     /**

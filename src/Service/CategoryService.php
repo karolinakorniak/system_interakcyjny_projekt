@@ -58,4 +58,9 @@ class CategoryService implements CategoryServiceInterface
     {
         $this->categoryRepository->remove($category);
     }
+
+    public function findOneByName(string $name): ?Category
+    {
+        return $this->categoryRepository->findOneByName($name);
+    }
 }
