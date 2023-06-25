@@ -92,7 +92,7 @@
             </trans-unit>
             <trans-unit id="20">
                 <source>questions.answer.title</source>
-                <target>Odpowiedz %questionTitle%</target>
+                <target>Odpowiedz na %questionTitle%</target>
             </trans-unit>
             <trans-unit id="21">
                 <source>action.answer</source>
@@ -310,7 +310,10 @@
                 <source>profile.edited</source>
                 <target>Twój profil został zaktualizowany</target>
             </trans-unit>
-
+            <trans-unit id="78">
+                <source>message.form_error</source>
+                <target>Coś poszło nie tak</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

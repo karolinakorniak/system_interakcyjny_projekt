@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\QuestionRepository;
-use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -63,7 +62,7 @@ class Question
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Gedmo\Timestampable(on: 'create')]
-    #[Assert\Type(DateTimeImmutable::class)]
+    #[Assert\Type(DateTimeInterface::class)]
     private ?\DateTimeInterface $created_date = null;
 
     /**
@@ -72,7 +71,7 @@ class Question
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Gedmo\Timestampable(on: 'update')]
-    #[Assert\Type(DateTimeImmutable::class)]
+    #[Assert\Type(DateTimeInterface::class)]
     private ?\DateTimeInterface $last_modified_date = null;
 
 

@@ -310,6 +310,10 @@
                 <source>profile.edited</source>
                 <target>Your profile was updated</target>
             </trans-unit>
+            <trans-unit id="78">
+                <source>message.form_error</source>
+                <target>Something went wrong</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

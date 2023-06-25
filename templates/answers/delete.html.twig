@@ -1,23 +1,7 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}
-    {{ 'answer.delete.title' | trans }}
-{% endblock %}
-
-{% block body %}
-    <h1>{{ 'answer.delete.header' | trans({'%email%': answer.email}) }}</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ answer.content }}
-    <div class="form-group row float-sm-right">
-        <input type="submit" value="{{ 'actions.delete'|trans }}" class="btn btn-primary"/>
-    </div>
-    <div class="form-group row float-sm-left">
-        <a href="{{ url('single_question', {'slug': answer.question.slug}) }}" class="btn btn-link">
-            {{ 'action.back'|trans }}
-        </a>
-    </div>
-    {{ form_end(form) }}
-{% endblock %}
-
+{% include 'default/_form.html.twig' with {
+    page_title: 'answer.delete.header' | trans({'%email%': answer.email}),
+    form: form,
+    submit_label: 'action.save'|trans,
+    back_to_list_path: url('single_question', {'slug': answer.question.slug}),
+} %}
 

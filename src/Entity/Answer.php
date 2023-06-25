@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\AnswerRepository;
-use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -61,7 +60,7 @@ class Answer
      * @var DateTimeInterface|null
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Assert\Type(DateTimeImmutable::class)]
+    #[Assert\Type(DateTimeInterface::class)]
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeInterface $date = null;
 
