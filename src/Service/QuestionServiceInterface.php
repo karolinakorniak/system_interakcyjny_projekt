@@ -7,6 +7,9 @@ use App\Entity\Question;
 use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
+/**
+ * Interface QuestionServiceInterface
+ */
 interface QuestionServiceInterface
 {
     /**

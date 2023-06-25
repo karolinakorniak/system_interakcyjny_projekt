@@ -7,6 +7,9 @@ use App\Repository\CategoryRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
+/**
+ * Class CategoryService
+ */
 class CategoryService implements CategoryServiceInterface
 {
     /**

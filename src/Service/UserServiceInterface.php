@@ -4,6 +4,9 @@ namespace App\Service;
 
 use App\Entity\User;
 
+/**
+ * Interface UserServiceInterface
+ */
 interface UserServiceInterface
 {
     /**

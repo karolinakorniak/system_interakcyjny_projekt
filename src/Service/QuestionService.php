@@ -10,6 +10,9 @@ use App\Repository\QuestionRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
+/**
+ * Class QuestionService
+ */
 class QuestionService implements QuestionServiceInterface
 {
     /**
