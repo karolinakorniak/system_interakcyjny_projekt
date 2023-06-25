@@ -23,11 +23,11 @@ class Category
     #[Gedmo\Slug(fields: ['name'])]
     private ?string $slug = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(fetch: "EXTRA_LAZY")]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
-    #[ORM\ManyToMany(targetEntity: Question::class, mappedBy: 'categories')]
+    #[ORM\ManyToMany(targetEntity: Question::class, mappedBy: 'categories', fetch: "EXTRA_LAZY")]
     private Collection $questions;
 
     public function __construct()

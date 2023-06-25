@@ -32,7 +32,7 @@ class Answer
     #[ORM\Column]
     private ?bool $is_deleted = null;
 
-    #[ORM\ManyToOne(inversedBy: 'answers')]
+    #[ORM\ManyToOne(fetch: "EXTRA_LAZY", inversedBy: 'answers')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Question $question = null;
 

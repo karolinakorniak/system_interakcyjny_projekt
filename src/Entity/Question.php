@@ -37,17 +37,17 @@ class Question
     private ?\DateTimeInterface $last_modified_date = null;
 
 
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'questions')]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'questions', fetch: "EXTRA_LAZY")]
     private Collection $categories;
 
-    #[ORM\OneToMany(mappedBy: 'question', targetEntity: Answer::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'question', targetEntity: Answer::class, fetch: "EXTRA_LAZY", orphanRemoval: true)]
     private Collection $answers;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(cascade: ['persist', 'remove'], fetch: "EXTRA_LAZY")]
     #[ORM\JoinColumn(onDelete: "SET NULL")]
     private ?Answer $best_answer = null;
 
-    #[ORM\ManyToOne(inversedBy: 'questions')]
+    #[ORM\ManyToOne(fetch: "EXTRA_LAZY", inversedBy: 'questions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 

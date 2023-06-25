@@ -21,7 +21,7 @@ class UserData
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\OneToOne(inversedBy: 'userData', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'userData', cascade: ['persist', 'remove'], fetch: "EXTRA_LAZY")]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 

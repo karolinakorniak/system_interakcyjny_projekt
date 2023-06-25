@@ -60,10 +60,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password;
 
 
-    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'], fetch: "EXTRA_LAZY")]
     private ?UserData $userData = null;
 
-    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Question::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Question::class, fetch: "EXTRA_LAZY", orphanRemoval: true)]
     private Collection $questions;
 
     public function __construct()
