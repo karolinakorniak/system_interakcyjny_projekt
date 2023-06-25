@@ -13,6 +13,9 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * Profile Controller.
+ */
 #[Route("/profile")]
 class ProfileController extends AbstractController
 {
@@ -23,8 +26,6 @@ class ProfileController extends AbstractController
 
     /**
      * Translator.
-     *
-     * @var TranslatorInterface
      */
     private TranslatorInterface $translator;
 
@@ -34,9 +35,9 @@ class ProfileController extends AbstractController
     private UserPasswordHasherInterface $passwordHasher;
 
     /**
-     * @param UserPasswordHasherInterface $passwordHasher
-     * @param TranslatorInterface $translator
-     * @param UserServiceInterface $userService
+     * @param UserPasswordHasherInterface $passwordHasher Password Hasher
+     * @param TranslatorInterface $translator Translator
+     * @param UserServiceInterface $userService User Service
      */
     public function __construct(UserPasswordHasherInterface $passwordHasher,
                                 TranslatorInterface $translator,
@@ -46,7 +47,6 @@ class ProfileController extends AbstractController
         $this->translator = $translator;
         $this->userService = $userService;
     }
-
 
     /**
      * Index action
@@ -69,6 +69,12 @@ class ProfileController extends AbstractController
         );
     }
 
+    /**
+     * Edit action.
+     *
+     * @param Request $request HTTP Request
+     * @return Response HTTP Response
+     */
     #[Route('/edit', name: "edit_profile", methods: "PUT|GET")]
     public function edit(Request $request): Response
     {
@@ -101,6 +107,12 @@ class ProfileController extends AbstractController
         );
     }
 
+    /**
+     * Change password action.
+     *
+     * @param Request $request HTTP Request
+     * @return Response HTTP Response
+     */
     #[Route('/change_password', name: "change_password", methods: "PUT|GET")]
     public function changePassword(Request $request): Response
     {

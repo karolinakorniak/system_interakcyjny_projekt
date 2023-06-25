@@ -13,6 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * Categories Controller.
+ */
 #[Route("/categories")]
 class CategoriesController extends AbstractController
 {
@@ -27,7 +30,10 @@ class CategoriesController extends AbstractController
     private TranslatorInterface $translator;
 
     /**
-     * @param CategoryServiceInterface $categoryService
+     * Constructor
+     *
+     * @param CategoryServiceInterface $categoryService Category Service
+     * @param TranslatorInterface $translator Translator
      */
     public function __construct(CategoryServiceInterface $categoryService, TranslatorInterface $translator)
     {
@@ -35,7 +41,12 @@ class CategoriesController extends AbstractController
         $this->translator = $translator;
     }
 
-
+    /**
+     * Index action
+     *
+     * @param Request $request HTTP Request
+     * @return Response HTTP Response
+     */
     #[Route('/', name: 'category_index')]
     public function index(Request $request): Response
     {
@@ -50,7 +61,7 @@ class CategoriesController extends AbstractController
     }
 
     /**
-     * Edit a question.
+     * Edit action.
      *
      * @param Request $request HTTP request
      *
@@ -131,6 +142,12 @@ class CategoriesController extends AbstractController
         );
     }
 
+    /**
+     * Create action.
+     *
+     * @param Request $request HTTP Request
+     * @return Response HTTP Response
+     */
     #[Route('/create', name: 'add_category')]
     public function create(Request $request): Response
     {

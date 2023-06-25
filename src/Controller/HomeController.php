@@ -6,9 +6,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Home controller.
+ */
 #[Route("/")]
 class HomeController extends AbstractController
 {
+    /**
+     * Index action
+     *
+     * @return Response HTTP Response
+     */
     #[Route('/', name: 'home')]
     public function index(): Response
     {

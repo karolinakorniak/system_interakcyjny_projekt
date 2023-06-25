@@ -306,6 +306,10 @@
                 <source>action.none</source>
                 <target>None</target>
             </trans-unit>
+            <trans-unit id="77">
+                <source>profile.edited</source>
+                <target>Your profile was updated</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

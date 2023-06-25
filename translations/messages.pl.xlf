@@ -306,6 +306,10 @@
                 <source>action.none</source>
                 <target>Brak</target>
             </trans-unit>
+            <trans-unit id="77">
+                <source>profile.edited</source>
+                <target>Twój profil został zaktualizowany</target>
+            </trans-unit>
 
         </body>
     </file>
