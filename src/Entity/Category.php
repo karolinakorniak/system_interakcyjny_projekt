@@ -7,8 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ORM\Table(name: 'categories')]
+#[UniqueEntity(fields: ['name'])]
 class Category
 {
     #[ORM\Id]
@@ -17,10 +21,14 @@ class Category
     private ?int $id = null;
 
     #[ORM\Column(length: 64)]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 64)]
     private ?string $name = null;
 
     #[ORM\Column(length: 64)]
     #[Gedmo\Slug(fields: ['name'])]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 64)]
     private ?string $slug = null;
 
     #[ORM\ManyToOne(fetch: "EXTRA_LAZY")]

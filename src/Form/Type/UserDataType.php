@@ -34,14 +34,14 @@ class UserDataType extends AbstractType
             [
                 'label' => 'profile.labels.name',
                 'required' => true,
-                'attr' => ['max_length' => 255]
+                'attr' => ['maxlength' => 255, 'minlength' => 3]
             ])->add(
             'description',
             TextareaType::class,
             [
                 'label' => 'profile.labels.description',
                 'required' => true,
-                'attr' => ['max_length' => 400]
+                'attr' => ['maxlength' => 500, 'minlength' => 3]
             ]);
     }
 

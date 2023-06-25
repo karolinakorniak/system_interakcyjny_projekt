@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\QuestionRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: QuestionRepository::class)]
 #[ORM\Table(name: 'questions')]
@@ -18,22 +20,31 @@ class Question
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 64)]
+    #[ORM\Column(length: 150)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 150)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 64)]
+    #[ORM\Column(length: 150)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 150)]
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 500)]
     private ?string $content = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Gedmo\Timestampable(on: 'create')]
+    #[Assert\Type(DateTimeImmutable::class)]
     private ?\DateTimeInterface $created_date = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Gedmo\Timestampable(on: 'update')]
+    #[Assert\Type(DateTimeImmutable::class)]
     private ?\DateTimeInterface $last_modified_date = null;
 
 

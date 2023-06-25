@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\AnswerRepository;
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AnswerRepository::class)]
 #[ORM\Table(name: 'answers')]
@@ -17,15 +19,25 @@ class Answer
     private ?int $id = null;
 
     #[ORM\Column(length: 191)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 191)]
     private ?string $username = null;
 
     #[ORM\Column(length: 191)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 191)]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 500)]
     private ?string $content = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\Type(DateTimeImmutable::class)]
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeInterface $date = null;
 

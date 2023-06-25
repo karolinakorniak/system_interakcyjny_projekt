@@ -45,14 +45,14 @@ class QuestionType extends AbstractType
             [
                 'label' => 'questions.labels.title',
                 'required' => true,
-                'attr' => ['max_length' => 64],
+                'attr' => ['maxlength' => 150, 'minlength' => 3],
             ])->add(
             'content',
             TextareaType::class,
             [
                 'label' => 'questions.labels.content',
                 'required' => true,
-                'attr' => ['max_length' => 400]
+                'attr' => ['maxlength' => 500, 'minlength' => 3]
             ])->add(
                 "categories",
             TextType::class, [

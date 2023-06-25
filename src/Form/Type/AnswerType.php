@@ -37,20 +37,20 @@ class AnswerType extends AbstractType
             [
                 'label' => 'answer.labels.username',
                 'required' => true,
-                'attr' => ['max_length' => 191],
+                'attr' => ['maxlength' => 191, 'minlength' => 3],
             ])->add(
             'email',
             EmailType::class,
             [
                 'label' => 'answer.labels.email',
                 'required' => true,
-                'attr' => ['max_length' => 191]
+                'attr' => ['maxlength' => 191, 'minlength' => 3]
             ])->add('content',
             TextareaType::class,
             [
                 'label' => 'answer.labels.content',
                 'required' => true,
-                'attr' => ['max_length' => 500]
+                'attr' => ['maxlength' => 500, 'minlength' => 3]
             ]);
     }
 

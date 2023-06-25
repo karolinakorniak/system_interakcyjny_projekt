@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserDataRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserDataRepository::class)]
 #[ORM\Table(name: 'user_data')]
@@ -16,9 +17,13 @@ class UserData
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 255)]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 500)]
     private ?string $description = null;
 
     #[ORM\OneToOne(inversedBy: 'userData', cascade: ['persist', 'remove'], fetch: "EXTRA_LAZY")]

@@ -7,6 +7,7 @@ use App\Entity\Question;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,11 +30,11 @@ class UserType extends AbstractType
     {
         $builder->add(
             'email',
-            TextType::class,
+            EmailType::class,
             [
                 'label' => 'profile.labels.email',
                 'required' => true,
-                'attr' => ['max_length' => 180],
+                'attr' => ['maxlength' => 180, 'minlength' => 3],
             ])->add(
             "userData",
             UserDataType::class,
