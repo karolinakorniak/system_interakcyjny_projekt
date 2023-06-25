@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Home controller.
+ * Class HomeController.
  */
 #[Route("/")]
 class HomeController extends AbstractController

@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Profile Controller.
+ * Class ProfileController.
  */
 #[Route("/profile")]
 class ProfileController extends AbstractController

@@ -14,7 +14,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Categories Controller.
+ * Class CategoriesController.
  */
 #[Route("/categories")]
 class CategoriesController extends AbstractController

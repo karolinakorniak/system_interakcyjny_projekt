@@ -17,7 +17,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Questions Controller
+ * Class QuestionsController
  */
 #[Route("/questions")]
 class QuestionsController extends AbstractController

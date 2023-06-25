@@ -6,8 +6,16 @@ use App\Entity\Category;
 use App\Entity\User;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
+/**
+ * Class CategoryFixtures
+ */
 class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
+    /**
+     * Load data
+     *
+     * @return void
+     */
     protected function loadData(): void
     {
         $this->createMany(10, "categories", function () {

@@ -9,8 +9,16 @@ use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
+/**
+ * Class AnswerFixtures
+ */
 class AnswerFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
+    /**
+     * Load data
+     *
+     * @return void
+     */
     protected function loadData(): void
     {
         $this->createMany(200, "answers", function () {
@@ -34,6 +42,10 @@ class AnswerFixtures extends AbstractBaseFixtures implements DependentFixtureInt
         $this->manager->flush();
     }
 
+    /**
+     * Returns dependencies
+     * @return string[]
+     */
     public function getDependencies()
     {
         return [QuestionFixtures::class];
