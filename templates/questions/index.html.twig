@@ -40,7 +40,7 @@
                         <td>{{ question.answers.count() }}</td>
                         <td>
                             {% for category in question.categories %}
-                                <span>{{ category.name }}</span>
+                                <a href="{{ url('question_by_category', {slug: category.slug}) }}">{{ category.name }}</a>
                             {% endfor %}
                         </td>
                         <td>{{ question.author.getUserData().name }}</td>
