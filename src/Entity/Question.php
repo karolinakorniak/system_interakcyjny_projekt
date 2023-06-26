@@ -42,7 +42,6 @@ class Question
      * @var string|null
      */
     #[ORM\Column(length: 150)]
-    #[Assert\NotBlank]
     #[Assert\Length(min: 3, max: 150)]
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug = null;
