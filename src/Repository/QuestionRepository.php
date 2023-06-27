@@ -49,7 +49,10 @@ class QuestionRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('q.created_date', 'DESC');
+            ->select('question', 'category', 'author')
+            ->join('question.categories', 'category')
+            ->join('question.author', 'author')
+            ->orderBy('question.created_date', 'DESC');
     }
 
     /**
@@ -61,8 +64,7 @@ class QuestionRepository extends ServiceEntityRepository
     public function queryByCategorySlug(string $categorySlug): QueryBuilder
     {
         return $this->queryAll()
-            ->innerJoin('q.categories', 'c')
-            ->where('c.slug = :category')
+            ->where('category.slug = :category')
             ->setParameter('category', $categorySlug);
     }
 
@@ -75,7 +77,7 @@ class QuestionRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('q');
+        return $queryBuilder ?? $this->createQueryBuilder('question');
     }
 
 //    /**
