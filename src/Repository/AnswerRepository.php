@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Answer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -16,6 +17,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class AnswerRepository extends ServiceEntityRepository
 {
+    public const PAGINATOR_ITEMS_PER_PAGE = 10;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Answer::class);
@@ -60,4 +63,11 @@ class AnswerRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function findByQuestionId(int $id): QueryBuilder
+    {
+        return $this->createQueryBuilder('answer')
+            ->join('answer.question', 'question')
+            ->where('question.id = :questionId')
+            ->setParameter('questionId', $id);
+    }
 }

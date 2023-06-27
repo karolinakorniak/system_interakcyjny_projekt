@@ -7,6 +7,7 @@ use App\Entity\Category;
 use App\Entity\Question;
 use App\Form\Type\AnswerType;
 use App\Form\Type\QuestionType;
+use App\Service\AnswerServiceInterface;
 use App\Service\QuestionServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -28,6 +29,12 @@ class QuestionsController extends AbstractController
     private QuestionServiceInterface $questionService;
 
     /**
+     * Answer Service
+     */
+    private AnswerServiceInterface $answerService;
+
+
+    /**
      * Translator.
      *
      * @var TranslatorInterface
@@ -40,10 +47,14 @@ class QuestionsController extends AbstractController
      * @param QuestionServiceInterface $questionService Question Service
      * @param TranslatorInterface $translator Translator
      */
-    public function __construct(QuestionServiceInterface $questionService, TranslatorInterface $translator)
-    {
+    public function __construct(
+        QuestionServiceInterface $questionService,
+        TranslatorInterface $translator,
+        AnswerServiceInterface $answerService
+    ) {
         $this->questionService = $questionService;
         $this->translator = $translator;
+        $this->answerService = $answerService;
     }
 
     /**
@@ -144,9 +155,11 @@ class QuestionsController extends AbstractController
      * @param Question $question Question entity
      * @return Response HTTP response
      */
-    #[Route('/{slug}/delete',
+    #[Route(
+        '/{slug}/delete',
         name: 'delete_question',
-        methods: 'GET|DELETE')]
+        methods: 'GET|DELETE'
+    )]
     #[IsGranted("DELETE", subject: 'question')]
     public function delete(Request $request, Question $question): Response
     {
@@ -187,11 +200,19 @@ class QuestionsController extends AbstractController
      * @return Response HTTP Response
      */
     #[Route('/{slug}', name: 'single_question')]
-    public function singleQuestion(Question $question): Response
+    public function singleQuestion(Question $question, Request $request): Response
     {
+        $answerPagination = $this->answerService->getPaginatedListForQuestion(
+            $question->getId(),
+            $request->query->getInt('page', 1)
+        );
+
         return $this->render(
             'questions/single.html.twig',
-            ['question' => $question]
+            [
+                'question' => $question,
+                'pagination' => $answerPagination
+            ]
         );
     }
 
@@ -204,10 +225,11 @@ class QuestionsController extends AbstractController
      * @return Response HTTP Response
      */
     #[Route('/byCategory/{slug}', name: "question_by_category")]
-    public function byCategory(Request  $request,
-                               string   $slug,
-                               Category $category): Response
-    {
+    public function byCategory(
+        Request $request,
+        string $slug,
+        Category $category
+    ): Response {
         $pagination = $this->questionService->getPaginatedListByCategory(
             $request->query->getInt('page', 1),
             $slug
