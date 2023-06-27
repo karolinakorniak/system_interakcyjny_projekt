@@ -55,6 +55,10 @@ class QuestionService implements QuestionServiceInterface
             $this->questionRepository->queryAll(),
             $page,
             QuestionRepository::PAGINATOR_ITEMS_PER_PAGE,
+            [
+                'defaultSortFieldName' => 'question.created_date',
+                'defaultSortDirection' => 'desc',
+            ]
         );
     }
 

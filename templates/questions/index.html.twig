@@ -18,12 +18,12 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>{{ 'questions.labels.title' | trans }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'questions.labels.title' | trans, 'question.title') }}</th>
                     <th>{{ 'questions.labels.answerCount' | trans }}</th>
                     <th>{{ 'questions.labels.categories' | trans }}</th>
                     <th>{{ 'questions.labels.authorName' | trans }}</th>
-                    <th>{{ 'questions.labels.created' | trans }}</th>
-                    <th>{{ 'questions.labels.lastModified' | trans }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'questions.labels.created' | trans, 'question.created_date') }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'questions.labels.lastModified' | trans, 'question.last_modified_date') }}</th>
                     {% if is_granted("ROLE_ADMIN") %}
                         <th>{{ 'labels.actions' | trans }}</th>
                     {% endif %}

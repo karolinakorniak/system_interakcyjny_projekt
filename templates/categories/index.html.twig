@@ -14,7 +14,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>{{ 'category.labels.name' | trans }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'category.labels.name' | trans, 'category.name') }}</th>
                     <th>{{ 'category.labels.authorName' | trans }}</th>
                     <th>{{ 'category.labels.numberOfQuestions' | trans }}</th>
                     <th>{{ 'labels.actions' | trans }}</th>
