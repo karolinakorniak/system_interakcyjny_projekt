@@ -32,11 +32,6 @@ class QuestionRepository extends ServiceEntityRepository
 
     public function remove(Question $entity): void
     {
-        $answers = $entity->getAnswers();
-        foreach ($answers as $answer) {
-            $this->getEntityManager()->remove($answer);
-        }
-        $this->getEntityManager()->flush();
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
     }
@@ -49,8 +44,7 @@ class QuestionRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->select('question', 'category', 'author')
-            ->join('question.categories', 'category')
+            ->select('question', 'author')
             ->join('question.author', 'author')
             ->orderBy('question.created_date', 'DESC');
     }
