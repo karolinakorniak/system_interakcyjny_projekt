@@ -308,7 +308,8 @@ class QuestionsController extends AbstractController
      * @param Answer $answer Answer entity
      * @return Response HTTP Response
      */
-    #[Route('/answer/{id}',
+    #[Route(
+        '/answer/{id}',
         name: "delete_answer",
         methods: 'DELETE|GET'
     )]

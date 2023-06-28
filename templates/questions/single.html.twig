@@ -25,11 +25,11 @@
         </div>
         <div class="row">
             <label class="col">{{ 'questions.labels.created' | trans }}:</label>
-            <div class="col">{{ question.createdDate|date('Y/m/d') }}</div>
+            <div class="col">{{ question.createdDate|format_date('relative_long') }}</div>
         </div>
         <div class="row">
             <label class="col">{{ 'questions.labels.lastModified' | trans }}:</label>
-            <div class="col">{{ question.lastModifiedDate|date('Y/m/d') }}</div>
+            <div class="col">{{ question.lastModifiedDate|format_date('relative_long') }}</div>
         </div>
     </div>
     {% if question.bestAnswer %}
@@ -40,7 +40,9 @@
         </div>
     {% endif %}
     <h3>{{ 'answers.title' | trans }}</h3>
-    <a class="btn btn-primary" href="{{ url('add_answer', {slug:question.slug}) }}">{{ 'action.answer' | trans }}</a>
+    <a class="btn btn-primary" href="{{ url('add_answer', {slug:question.slug}) }}">
+        {{ 'action.answer' | trans }}
+    </a>
     <div class="vstack gap-3 mt-3">
         {% if pagination is defined and pagination.items|length %}
             {% for answer in pagination.items %}

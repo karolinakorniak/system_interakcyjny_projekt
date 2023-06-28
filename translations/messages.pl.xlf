@@ -282,6 +282,10 @@
                 <source>message.form_error</source>
                 <target>Coś poszło nie tak</target>
             </trans-unit>
+            <trans-unit id="79">
+                <source>title</source>
+                <target>Q&amp;A</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
