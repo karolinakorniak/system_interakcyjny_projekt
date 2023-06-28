@@ -58,6 +58,7 @@ class QuestionRepository extends ServiceEntityRepository
     public function queryByCategorySlug(string $categorySlug): QueryBuilder
     {
         return $this->queryAll()
+            ->join("question.categories", "category")
             ->where('category.slug = :category')
             ->setParameter('category', $categorySlug);
     }

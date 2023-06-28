@@ -69,8 +69,7 @@ class CategoryRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->select('category', 'questions', 'author')
-            ->join('category.questions', 'questions')
+            ->select('category', 'author')
             ->join('category.author', 'author');
     }
 
