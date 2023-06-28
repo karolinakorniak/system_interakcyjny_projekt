@@ -4,6 +4,7 @@
     <option name="transferred" value="true" />
   </component>
   <component name="PHPCSFixerOptionsConfiguration">
+    <option name="codingStandard" value="PSR12" />
     <option name="transferred" value="true" />
   </component>
   <component name="PHPCodeSnifferOptionsConfiguration">
@@ -20,6 +21,9 @@
     <phpcs_settings>
       <PhpCSConfiguration tool_path="$PROJECT_DIR$/vendor/bin/phpcs" />
     </phpcs_settings>
+  </component>
+  <component name="PhpExternalFormatter">
+    <option name="externalFormatter" value="PHP_CS_FIXER" />
   </component>
   <component name="PhpIncludePathManager">
     <include_path>
