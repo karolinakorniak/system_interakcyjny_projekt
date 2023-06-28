@@ -68,6 +68,7 @@ class AnswerRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('answer')
             ->join('answer.question', 'question')
             ->where('question.id = :questionId')
+            ->orderBy('answer.date', 'DESC')
             ->setParameter('questionId', $id);
     }
 }

@@ -71,6 +71,10 @@ class QuestionService implements QuestionServiceInterface
             $this->questionRepository->queryByCategorySlug($categorySlug),
             $page,
             QuestionRepository::PAGINATOR_ITEMS_PER_PAGE,
+            [
+                'defaultSortFieldName' => 'question.created_date',
+                'defaultSortDirection' => 'desc',
+            ]
         );
     }
 
