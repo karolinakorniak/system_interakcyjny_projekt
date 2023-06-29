@@ -65,7 +65,7 @@ class Answer
      * Is marked as deleted.
      */
     #[ORM\Column]
-    private ?bool $is_deleted = null;
+    private ?bool $isDeleted = null;
 
     /**
      * Related Question.
@@ -187,19 +187,19 @@ class Answer
      */
     public function isIsDeleted(): ?bool
     {
-        return $this->is_deleted;
+        return $this->isDeleted;
     }
 
     /**
      * Setter for isDeleted.
      *
-     * @param bool $is_deleted Whether this Answer should be marked as deleted
+     * @param bool $isDeleted Whether this Answer should be marked as deleted
      *
      * @return $this
      */
-    public function setIsDeleted(bool $is_deleted): self
+    public function setIsDeleted(bool $isDeleted): self
     {
-        $this->is_deleted = $is_deleted;
+        $this->isDeleted = $isDeleted;
 
         return $this;
     }

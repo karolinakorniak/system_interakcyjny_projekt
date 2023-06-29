@@ -29,7 +29,7 @@
         </div>
         <div class="row">
             <label class="col">{{ 'questions.labels.lastModified' | trans }}:</label>
-            <div class="col">{{ question.lastModifiedDate|format_date('relative_long') }}</div>
+            <div class="col">{{ question.lastModifiedAt|format_date('relative_long') }}</div>
         </div>
     </div>
     {% if question.bestAnswer %}
