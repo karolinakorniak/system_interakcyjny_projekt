@@ -60,7 +60,7 @@ class QuestionService implements QuestionServiceInterface
             $page,
             QuestionRepository::PAGINATOR_ITEMS_PER_PAGE,
             [
-                'defaultSortFieldName' => 'question.created_date',
+                'defaultSortFieldName' => 'question.createdAt',
                 'defaultSortDirection' => 'desc',
             ]
         );
@@ -81,7 +81,7 @@ class QuestionService implements QuestionServiceInterface
             $page,
             QuestionRepository::PAGINATOR_ITEMS_PER_PAGE,
             [
-                'defaultSortFieldName' => 'question.created_date',
+                'defaultSortFieldName' => 'question.createdAt',
                 'defaultSortDirection' => 'desc',
             ]
         );

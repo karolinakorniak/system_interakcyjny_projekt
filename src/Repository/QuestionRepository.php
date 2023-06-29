@@ -67,7 +67,7 @@ class QuestionRepository extends ServiceEntityRepository
         return $this->getOrCreateQueryBuilder()
             ->select('question', 'author')
             ->join('question.author', 'author')
-            ->orderBy('question.created_date', 'DESC');
+            ->orderBy('question.createdAt', 'DESC');
     }
 
     /**

@@ -59,7 +59,7 @@ class Question
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Gedmo\Timestampable(on: 'create')]
     #[Assert\Type(\DateTimeInterface::class)]
-    private ?\DateTimeInterface $created_date = null;
+    private ?\DateTimeInterface $createdAt = null;
 
     /**
      * Last modified at.
@@ -191,21 +191,21 @@ class Question
      *
      * @return \DateTimeInterface|null CreatedAt date
      */
-    public function getCreatedDate(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_date;
+        return $this->createdAt;
     }
 
     /**
      * Setter for created at.
      *
-     * @param \DateTimeInterface $created_date Date to set
+     * @param \DateTimeInterface $createdAt Date to set
      *
      * @return $this
      */
-    public function setCreatedDate(\DateTimeInterface $created_date): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_date = $created_date;
+        $this->createdAt = $createdAt;
 
         return $this;
     }

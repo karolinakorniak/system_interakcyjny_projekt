@@ -22,7 +22,7 @@
                     <th>{{ 'questions.labels.answerCount' | trans }}</th>
                     <th>{{ 'questions.labels.categories' | trans }}</th>
                     <th>{{ 'questions.labels.authorName' | trans }}</th>
-                    <th>{{ knp_pagination_sortable(pagination, 'questions.labels.created' | trans, 'question.created_date') }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'questions.labels.created' | trans, 'question.createdAt') }}</th>
                     <th>{{ knp_pagination_sortable(pagination, 'questions.labels.lastModified' | trans, 'question.last_modified_date') }}</th>
                     {% if is_granted("ROLE_ADMIN") %}
                         <th>{{ 'labels.actions' | trans }}</th>
@@ -44,7 +44,7 @@
                             {% endfor %}
                         </td>
                         <td>{{ question.author.getUserData().name }}</td>
-                        <td>{{ question.getCreatedDate()|format_date('relative_long') }}</td>
+                        <td>{{ question.createdAt|format_date('relative_long') }}</td>
                         <td>{{ question.getLastModifiedDate()|format_date('relative_long') }}</td>
                         {% if is_granted("ROLE_ADMIN") %}
                             <td class="hstack gap-3">
