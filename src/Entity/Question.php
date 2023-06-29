@@ -67,7 +67,7 @@ class Question
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Gedmo\Timestampable(on: 'update')]
     #[Assert\Type(\DateTimeInterface::class)]
-    private ?\DateTimeInterface $last_modified_date = null;
+    private ?\DateTimeInterface $lastModifiedAt = null;
 
     /**
      * Categories of this question.
@@ -215,21 +215,21 @@ class Question
      *
      * @return \DateTimeInterface|null LastModifiedAt date
      */
-    public function getLastModifiedDate(): ?\DateTimeInterface
+    public function getLastModifiedAt(): ?\DateTimeInterface
     {
-        return $this->last_modified_date;
+        return $this->lastModifiedAt;
     }
 
     /**
      * Setter for last modified at.
      *
-     * @param \DateTimeInterface $last_modified_date Date to set
+     * @param \DateTimeInterface $lastModifiedAt Date to set
      *
      * @return $this
      */
-    public function setLastModifiedDate(\DateTimeInterface $last_modified_date): self
+    public function setLastModifiedAt(\DateTimeInterface $lastModifiedAt): self
     {
-        $this->last_modified_date = $last_modified_date;
+        $this->lastModifiedAt = $lastModifiedAt;
 
         return $this;
     }
