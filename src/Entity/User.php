@@ -5,7 +5,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Enum\UserRole;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -24,8 +23,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * Primary key.
-     *
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -34,8 +31,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Email.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     #[Assert\NotBlank]
@@ -52,18 +47,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Password.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
     private ?string $password;
 
-
-    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'], fetch: "EXTRA_LAZY")]
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'], fetch: 'EXTRA_LAZY')]
     private ?UserData $userData = null;
 
-    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Question::class, fetch: "EXTRA_LAZY", orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Question::class, fetch: 'EXTRA_LAZY', orphanRemoval: true)]
     private Collection $questions;
 
     public function __construct()
@@ -168,7 +160,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->password = $password;
     }
-
 
     public function getUserData(): ?UserData
     {

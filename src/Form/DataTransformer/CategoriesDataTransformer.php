@@ -24,7 +24,7 @@ class CategoriesDataTransformer implements DataTransformerInterface
     private CategoryServiceInterface $categoryService;
 
     /**
-     * Security
+     * Security.
      */
     private Security $security;
 

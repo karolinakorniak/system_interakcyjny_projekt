@@ -6,7 +6,7 @@ use App\Entity\Category;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
- * Interface CategoryServiceInterface
+ * Interface CategoryServiceInterface.
  */
 interface CategoryServiceInterface
 {
@@ -28,15 +28,14 @@ interface CategoryServiceInterface
 
     /**
      * Delete category.
-     *
-     * @param Category $category
-     * @return void
      */
     public function deleteCategory(Category $category): void;
 
     /**
      * Find by name.
+     *
      * @param string $name Name to search for
+     *
      * @return Category|null Category entity
      */
     public function findOneByName(string $name): ?Category;

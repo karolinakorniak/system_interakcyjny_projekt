@@ -2,14 +2,9 @@
 
 namespace App\Form\Type;
 
-use App\Entity\Category;
-use App\Entity\Question;
 use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -38,12 +33,13 @@ class UserType extends AbstractType
                 'label' => 'profile.labels.email',
                 'required' => true,
                 'attr' => ['maxlength' => 180, 'minlength' => 3],
-            ])->add(
-            "userData",
+            ]
+        )->add(
+            'userData',
             UserDataType::class,
-                [
-                    'label' => 'profile.labels.userData'
-                ]
+            [
+                'label' => 'profile.labels.userData',
+            ]
         );
     }
 

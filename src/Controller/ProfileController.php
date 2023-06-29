@@ -16,11 +16,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 /**
  * Class ProfileController.
  */
-#[Route("/profile")]
+#[Route('/profile')]
 class ProfileController extends AbstractController
 {
     /**
-     * UserService
+     * UserService.
      */
     private UserServiceInterface $userService;
 
@@ -36,20 +36,21 @@ class ProfileController extends AbstractController
 
     /**
      * @param UserPasswordHasherInterface $passwordHasher Password Hasher
-     * @param TranslatorInterface $translator Translator
-     * @param UserServiceInterface $userService User Service
+     * @param TranslatorInterface         $translator     Translator
+     * @param UserServiceInterface        $userService    User Service
      */
-    public function __construct(UserPasswordHasherInterface $passwordHasher,
-                                TranslatorInterface $translator,
-                                UserServiceInterface $userService)
-    {
+    public function __construct(
+        UserPasswordHasherInterface $passwordHasher,
+        TranslatorInterface $translator,
+        UserServiceInterface $userService
+    ) {
         $this->passwordHasher = $passwordHasher;
         $this->translator = $translator;
         $this->userService = $userService;
     }
 
     /**
-     * Index action
+     * Index action.
      *
      * @return Response HTTP Response
      */
@@ -64,7 +65,7 @@ class ProfileController extends AbstractController
         return $this->render(
             'profile/index.html.twig',
             [
-                'user' => $user
+                'user' => $user,
             ]
         );
     }
@@ -73,9 +74,10 @@ class ProfileController extends AbstractController
      * Edit action.
      *
      * @param Request $request HTTP Request
+     *
      * @return Response HTTP Response
      */
-    #[Route('/edit', name: "edit_profile", methods: "PUT|GET")]
+    #[Route('/edit', name: 'edit_profile', methods: 'PUT|GET')]
     public function edit(Request $request): Response
     {
         /**
@@ -85,10 +87,9 @@ class ProfileController extends AbstractController
 
         $form = $this->createForm(UserType::class, $user, [
             'method' => 'PUT',
-            'action' => $this->generateUrl('edit_profile')
+            'action' => $this->generateUrl('edit_profile'),
         ]);
         $form->handleRequest($request);
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->userService->saveUser($user);
@@ -111,9 +112,10 @@ class ProfileController extends AbstractController
      * Change password action.
      *
      * @param Request $request HTTP Request
+     *
      * @return Response HTTP Response
      */
-    #[Route('/change_password', name: "change_password", methods: "PUT|GET")]
+    #[Route('/change_password', name: 'change_password', methods: 'PUT|GET')]
     public function changePassword(Request $request): Response
     {
         /**
@@ -123,32 +125,32 @@ class ProfileController extends AbstractController
 
         $form = $this->createForm(ChangePasswordType::class, null, [
             'method' => 'PUT',
-            'action' => $this->generateUrl('change_password')
+            'action' => $this->generateUrl('change_password'),
         ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
-            if (!$this->passwordHasher->isPasswordValid($user, $data["oldPassword"]))
-            {
-                $this->addFlash("error", $this->translator->trans('profile.incorrectPassword'));
+            if (!$this->passwordHasher->isPasswordValid($user, $data['oldPassword'])) {
+                $this->addFlash('error', $this->translator->trans('profile.incorrectPassword'));
+
                 return $this->render(
                     'profile/changePassword.html.twig',
                     ['form' => $form->createView()]
                 );
             }
 
-            if ($data["newPassword"] !== $data["confirmPassword"])
-            {
-                $this->addFlash("error", $this->translator->trans('profile.passwordMismatch'));
+            if ($data['newPassword'] !== $data['confirmPassword']) {
+                $this->addFlash('error', $this->translator->trans('profile.passwordMismatch'));
+
                 return $this->render(
                     'profile/changePassword.html.twig',
                     ['form' => $form->createView()]
                 );
             }
 
-            $this->userService->updatePassword($user, $data["newPassword"]);
+            $this->userService->updatePassword($user, $data['newPassword']);
 
             $this->addFlash(
                 'success',

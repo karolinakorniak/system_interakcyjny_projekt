@@ -2,11 +2,7 @@
 
 namespace App\Form\Type;
 
-use App\Entity\Category;
-use App\Entity\Question;
-use App\Entity\User;
 use App\Entity\UserData;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class UserDataType
+ * Class UserDataType.
  */
 class UserDataType extends AbstractType
 {
@@ -32,20 +28,22 @@ class UserDataType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            "name",
+            'name',
             TextType::class,
             [
                 'label' => 'profile.labels.name',
                 'required' => true,
-                'attr' => ['maxlength' => 255, 'minlength' => 3]
-            ])->add(
+                'attr' => ['maxlength' => 255, 'minlength' => 3],
+            ]
+        )->add(
             'description',
             TextareaType::class,
             [
-                'label' => 'profile.labels.description',
-                'required' => true,
-                'attr' => ['maxlength' => 500, 'minlength' => 3]
-            ]);
+            'label' => 'profile.labels.description',
+            'required' => true,
+            'attr' => ['maxlength' => 500, 'minlength' => 3],
+            ]
+        );
     }
 
     /**

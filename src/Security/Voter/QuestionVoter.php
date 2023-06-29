@@ -81,7 +81,7 @@ class QuestionVoter extends Voter
      * Checks if user can edit question.
      *
      * @param Question $question Question entity
-     * @param User $user User
+     * @param User     $user     User
      *
      * @return bool Result
      */
@@ -94,7 +94,7 @@ class QuestionVoter extends Voter
      * Checks if user can view task.
      *
      * @param Question $question Question entity
-     * @param User $user User
+     * @param User     $user     User
      *
      * @return bool Result
      */
@@ -107,7 +107,7 @@ class QuestionVoter extends Voter
      * Checks if user can delete task.
      *
      * @param Question $question Question entity
-     * @param User $user User
+     * @param User     $user     User
      *
      * @return bool Result
      */

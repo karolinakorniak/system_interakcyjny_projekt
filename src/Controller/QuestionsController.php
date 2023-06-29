@@ -18,34 +18,31 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class QuestionsController
+ * Class QuestionsController.
  */
-#[Route("/questions")]
+#[Route('/questions')]
 class QuestionsController extends AbstractController
 {
     /**
-     * Question Service
+     * Question Service.
      */
     private QuestionServiceInterface $questionService;
 
     /**
-     * Answer Service
+     * Answer Service.
      */
     private AnswerServiceInterface $answerService;
 
-
     /**
      * Translator.
-     *
-     * @var TranslatorInterface
      */
     private TranslatorInterface $translator;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param QuestionServiceInterface $questionService Question Service
-     * @param TranslatorInterface $translator Translator
+     * @param TranslatorInterface      $translator      Translator
      */
     public function __construct(
         QuestionServiceInterface $questionService,
@@ -61,6 +58,7 @@ class QuestionsController extends AbstractController
      * Index action.
      *
      * @param Request $request HTTP Request
+     *
      * @return Response HTTP Response
      */
     #[Route('/', name: 'question_index')]
@@ -80,6 +78,7 @@ class QuestionsController extends AbstractController
      * Create a question.
      *
      * @param Request $request HTTP request
+     *
      * @return Response HTTP response
      */
     #[Route(
@@ -115,6 +114,7 @@ class QuestionsController extends AbstractController
      * Edit a question.
      *
      * @param Request $request HTTP request
+     *
      * @return Response HTTP response
      */
     #[Route(
@@ -127,7 +127,7 @@ class QuestionsController extends AbstractController
     {
         $form = $this->createForm(QuestionType::class, $question, [
             'method' => 'PUT',
-            'action' => $this->generateUrl('edit_question', ['slug' => $question->getSlug()])
+            'action' => $this->generateUrl('edit_question', ['slug' => $question->getSlug()]),
         ]);
         $form->handleRequest($request);
 
@@ -151,8 +151,9 @@ class QuestionsController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request $request HTTP request
+     * @param Request  $request  HTTP request
      * @param Question $question Question entity
+     *
      * @return Response HTTP response
      */
     #[Route(
@@ -160,7 +161,7 @@ class QuestionsController extends AbstractController
         name: 'delete_question',
         methods: 'GET|DELETE'
     )]
-    #[IsGranted("DELETE", subject: 'question')]
+    #[IsGranted('DELETE', subject: 'question')]
     public function delete(Request $request, Question $question): Response
     {
         $form = $this->createForm(
@@ -188,7 +189,7 @@ class QuestionsController extends AbstractController
             'questions/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'question' => $question
+                'question' => $question,
             ]
         );
     }
@@ -197,6 +198,7 @@ class QuestionsController extends AbstractController
      * Show single Question action.
      *
      * @param Question $question Question entity
+     *
      * @return Response HTTP Response
      */
     #[Route('/{slug}', name: 'single_question')]
@@ -211,7 +213,7 @@ class QuestionsController extends AbstractController
             'questions/single.html.twig',
             [
                 'question' => $question,
-                'pagination' => $answerPagination
+                'pagination' => $answerPagination,
             ]
         );
     }
@@ -219,12 +221,13 @@ class QuestionsController extends AbstractController
     /**
      * List Questions in a category.
      *
-     * @param Request $request HTTP Request
-     * @param string $slug categorie's slug
+     * @param Request  $request  HTTP Request
+     * @param string   $slug     categorie's slug
      * @param Category $category Category entity
+     *
      * @return Response HTTP Response
      */
-    #[Route('/byCategory/{slug}', name: "question_by_category")]
+    #[Route('/byCategory/{slug}', name: 'question_by_category')]
     public function byCategory(
         Request $request,
         string $slug,
@@ -245,6 +248,7 @@ class QuestionsController extends AbstractController
      * Add answer to a question.
      *
      * @param Request $request HTTP request
+     *
      * @return Response HTTP response
      */
     #[Route(
@@ -276,10 +280,11 @@ class QuestionsController extends AbstractController
     }
 
     /**
-     * Mark given answer as best for this question
+     * Mark given answer as best for this question.
      *
-     * @param Request $request HTTP Request
+     * @param Request  $request  HTTP Request
      * @param Question $question Question entity
+     *
      * @return Response HTTP response
      */
     #[Route(
@@ -287,10 +292,10 @@ class QuestionsController extends AbstractController
         name: 'mark_best_answer',
         methods: 'PUT',
     )]
-    #[IsGranted("EDIT", subject: 'question')]
+    #[IsGranted('EDIT', subject: 'question')]
     public function markAnswerAsBest(Request $request, Question $question): Response
     {
-        $answerId = $request->get("answer_id");
+        $answerId = $request->get('answer_id');
         $this->questionService->markAnswerAsBest($question, $answerId);
 
         $this->addFlash(
@@ -305,12 +310,13 @@ class QuestionsController extends AbstractController
      * Mark answer as deleted.
      *
      * @param Request $request HTTP Request
-     * @param Answer $answer Answer entity
+     * @param Answer  $answer  Answer entity
+     *
      * @return Response HTTP Response
      */
     #[Route(
         '/answer/{id}',
-        name: "delete_answer",
+        name: 'delete_answer',
         methods: 'DELETE|GET'
     )]
     public function markAnswerAsDeleted(Request $request, Answer $answer): Response
@@ -340,7 +346,7 @@ class QuestionsController extends AbstractController
             'answers/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'answer' => $answer
+                'answer' => $answer,
             ]
         );
     }

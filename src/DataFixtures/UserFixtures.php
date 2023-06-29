@@ -23,7 +23,7 @@ class UserFixtures extends AbstractBaseFixtures
     private UserPasswordHasherInterface $passwordHasher;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param UserPasswordHasherInterface $passwordHasher Password hasher
      */
@@ -32,13 +32,12 @@ class UserFixtures extends AbstractBaseFixtures
         $this->passwordHasher = $passwordHasher;
     }
 
-
     /**
      * Load data.
      */
     public function loadData(): void
     {
-        $this->createMany(self::$USER_COUNT, "users", function ($i) {
+        $this->createMany(self::$USER_COUNT, 'users', function ($i) {
             $user = new User();
             $user->setEmail(sprintf('admin%d@example.com', $i));
             $user->setRoles([UserRole::ROLE_ADMIN->value]);

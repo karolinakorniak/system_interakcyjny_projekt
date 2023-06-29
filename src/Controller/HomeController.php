@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class HomeController.
  */
-#[Route("/")]
+#[Route('/')]
 class HomeController extends AbstractController
 {
     /**
-     * Index action
+     * Index action.
      *
      * @return Response HTTP Response
      */
@@ -24,5 +24,4 @@ class HomeController extends AbstractController
             'home/index.html.twig',
         );
     }
-
 }

@@ -5,7 +5,7 @@ namespace App\Service;
 use App\Entity\User;
 
 /**
- * Interface UserServiceInterface
+ * Interface UserServiceInterface.
  */
 interface UserServiceInterface
 {
@@ -17,11 +17,10 @@ interface UserServiceInterface
     public function saveUser(User $user): void;
 
     /**
-     * Update user's password
+     * Update user's password.
      *
-     * @param User $user User entity
+     * @param User   $user        User entity
      * @param string $newPassword New password
      */
     public function updatePassword(User $user, string $newPassword): void;
-
 }

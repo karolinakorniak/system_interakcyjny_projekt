@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class QuestionType
+ * Class QuestionType.
  */
 class QuestionType extends AbstractType
 {
@@ -22,8 +22,6 @@ class QuestionType extends AbstractType
 
     /**
      * Constructor.
-     *
-     * @param CategoriesDataTransformer $categoriesDataTransformer
      */
     public function __construct(CategoriesDataTransformer $categoriesDataTransformer)
     {
@@ -50,21 +48,25 @@ class QuestionType extends AbstractType
                 'label' => 'questions.labels.title',
                 'required' => true,
                 'attr' => ['maxlength' => 150, 'minlength' => 3],
-            ])->add(
+            ]
+        )->add(
             'content',
             TextareaType::class,
             [
-                'label' => 'questions.labels.content',
-                'required' => true,
-                'attr' => ['maxlength' => 500, 'minlength' => 3]
-            ])->add(
-                "categories",
-            TextType::class, [
-                'label' => 'questions.labels.categories',
-                'required' => false
-            ]);
+            'label' => 'questions.labels.content',
+            'required' => true,
+            'attr' => ['maxlength' => 500, 'minlength' => 3],
+            ]
+        )->add(
+            'categories',
+            TextType::class,
+            [
+            'label' => 'questions.labels.categories',
+            'required' => false,
+            ]
+        );
 
-        $builder->get("categories")->addModelTransformer($this->categoriesDataTransformer);
+        $builder->get('categories')->addModelTransformer($this->categoriesDataTransformer);
     }
 
     /**

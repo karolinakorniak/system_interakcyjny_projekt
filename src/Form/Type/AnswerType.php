@@ -38,20 +38,24 @@ class AnswerType extends AbstractType
                 'label' => 'answer.labels.username',
                 'required' => true,
                 'attr' => ['maxlength' => 191, 'minlength' => 3],
-            ])->add(
+            ]
+        )->add(
             'email',
             EmailType::class,
             [
-                'label' => 'answer.labels.email',
-                'required' => true,
-                'attr' => ['maxlength' => 191, 'minlength' => 3]
-            ])->add('content',
+            'label' => 'answer.labels.email',
+            'required' => true,
+            'attr' => ['maxlength' => 191, 'minlength' => 3],
+            ]
+        )->add(
+            'content',
             TextareaType::class,
             [
-                'label' => 'answer.labels.content',
-                'required' => true,
-                'attr' => ['maxlength' => 500, 'minlength' => 3]
-            ]);
+            'label' => 'answer.labels.content',
+            'required' => true,
+            'attr' => ['maxlength' => 500, 'minlength' => 3],
+            ]
+        );
     }
 
     /**

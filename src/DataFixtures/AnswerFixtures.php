@@ -3,37 +3,32 @@
 namespace App\DataFixtures;
 
 use App\Entity\Answer;
-use App\Entity\Category;
 use App\Entity\Question;
-use App\Entity\User;
-use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
- * Class AnswerFixtures
+ * Class AnswerFixtures.
  */
 class AnswerFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
-     * Load data
-     *
-     * @return void
+     * Load data.
      */
     protected function loadData(): void
     {
-        $this->createMany(200, "answers", function () {
+        $this->createMany(200, 'answers', function () {
             $answer = new Answer();
             $answer->setUsername($this->faker->userName);
             $answer->setEmail($this->faker->email);
             $answer->setContent($this->faker->realTextBetween(100, 180));
             $answer->setIsDeleted(false);
             $answer->setDate(
-                DateTimeImmutable::createFromMutable(
+                \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-1days', '-0days')
                 )
             );
             /** @var Question $question */
-            $question = $this->getRandomReference("questions");
+            $question = $this->getRandomReference('questions');
             $answer->setQuestion($question);
 
             return $answer;
@@ -43,7 +38,8 @@ class AnswerFixtures extends AbstractBaseFixtures implements DependentFixtureInt
     }
 
     /**
-     * Returns dependencies
+     * Returns dependencies.
+     *
      * @return string[]
      */
     public function getDependencies()

@@ -4,14 +4,13 @@ namespace App\Service;
 
 use App\Entity\Answer;
 use App\Entity\Question;
-use App\Entity\User;
 use App\Repository\AnswerRepository;
 use App\Repository\QuestionRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
- * Class QuestionService
+ * Class QuestionService.
  */
 class QuestionService implements QuestionServiceInterface
 {
@@ -21,7 +20,7 @@ class QuestionService implements QuestionServiceInterface
     private QuestionRepository $questionRepository;
 
     /**
-     * Answer repository
+     * Answer repository.
      */
     private AnswerRepository $answerRepository;
 
@@ -34,21 +33,18 @@ class QuestionService implements QuestionServiceInterface
      * Constructor.
      *
      * @param QuestionRepository $questionRepository Question repository
-     * @param PaginatorInterface $paginator Paginator
+     * @param PaginatorInterface $paginator          Paginator
      */
-    public function __construct(QuestionRepository $questionRepository,
-                                AnswerRepository $answerRepository,
-                                PaginatorInterface $paginator)
-    {
+    public function __construct(
+        QuestionRepository $questionRepository,
+        AnswerRepository $answerRepository,
+        PaginatorInterface $paginator
+    ) {
         $this->questionRepository = $questionRepository;
         $this->answerRepository = $answerRepository;
         $this->paginator = $paginator;
     }
 
-
-    /**
-     * @inheritDoc
-     */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
@@ -62,9 +58,6 @@ class QuestionService implements QuestionServiceInterface
         );
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getPaginatedListByCategory(int $page, string $categorySlug): PaginationInterface
     {
         return $this->paginator->paginate(
@@ -78,9 +71,6 @@ class QuestionService implements QuestionServiceInterface
         );
     }
 
-    /**
-     * @inheritDoc
-     */
     public function saveAnswer(Answer $answer, Question $question): void
     {
         $answer->setQuestion($question);
@@ -88,34 +78,22 @@ class QuestionService implements QuestionServiceInterface
         $this->answerRepository->save($answer);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function saveQuestion(Question $question): void
     {
         $this->questionRepository->save($question);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function deleteQuestion(Question $question): void
     {
         $this->questionRepository->remove($question);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function markAnswerAsDeleted(Answer $answer): void
     {
         $answer->setIsDeleted(true);
         $this->answerRepository->save($answer);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function markAnswerAsBest(Question $question, int $id): void
     {
         $answer = $this->answerRepository->find($id);

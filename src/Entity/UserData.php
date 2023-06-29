@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class UserDara
+ * Class UserDara.
  */
 #[ORM\Entity(repositoryClass: UserDataRepository::class)]
 #[ORM\Table(name: 'user_data')]
@@ -16,7 +16,6 @@ class UserData
 {
     /**
      * Primary key.
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -25,7 +24,6 @@ class UserData
 
     /**
      * Name.
-     * @var string|null
      */
     #[ORM\Column(length: 255)]
     #[Assert\Type('string')]
@@ -34,7 +32,6 @@ class UserData
 
     /**
      * Description.
-     * @var string|null
      */
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\Type('string')]
@@ -43,15 +40,13 @@ class UserData
 
     /**
      * User.
-     * @var User|null
      */
-    #[ORM\OneToOne(inversedBy: 'userData', cascade: ['persist', 'remove'], fetch: "EXTRA_LAZY")]
+    #[ORM\OneToOne(inversedBy: 'userData', cascade: ['persist', 'remove'], fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     /**
      * Getter for id.
-     * @return int|null
      */
     public function getId(): ?int
     {
@@ -60,7 +55,6 @@ class UserData
 
     /**
      * Getter for User.
-     * @return User|null
      */
     public function getUser(): ?User
     {
@@ -69,7 +63,7 @@ class UserData
 
     /**
      * Setter for User.
-     * @param User $user
+     *
      * @return $this
      */
     public function setUser(User $user): self
@@ -81,7 +75,6 @@ class UserData
 
     /**
      * Getter for name.
-     * @return string|null
      */
     public function getName(): ?string
     {
@@ -89,8 +82,8 @@ class UserData
     }
 
     /**
-     * Setter for name
-     * @param string $name
+     * Setter for name.
+     *
      * @return $this
      */
     public function setName(string $name): self
@@ -101,8 +94,7 @@ class UserData
     }
 
     /**
-     * Getter for description
-     * @return string|null
+     * Getter for description.
      */
     public function getDescription(): ?string
     {
@@ -110,8 +102,8 @@ class UserData
     }
 
     /**
-     * Setter for description
-     * @param string $description
+     * Setter for description.
+     *
      * @return $this
      */
     public function setDescription(string $description): self

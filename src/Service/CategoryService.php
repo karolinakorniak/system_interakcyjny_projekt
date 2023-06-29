@@ -8,7 +8,7 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
- * Class CategoryService
+ * Class CategoryService.
  */
 class CategoryService implements CategoryServiceInterface
 {
@@ -26,7 +26,7 @@ class CategoryService implements CategoryServiceInterface
      * Constructor.
      *
      * @param CategoryRepository $categoryRepository Category Respository
-     * @param PaginatorInterface $paginator Paginator
+     * @param PaginatorInterface $paginator          Paginator
      */
     public function __construct(CategoryRepository $categoryRepository, PaginatorInterface $paginator)
     {
@@ -34,9 +34,6 @@ class CategoryService implements CategoryServiceInterface
         $this->paginator = $paginator;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
@@ -46,17 +43,11 @@ class CategoryService implements CategoryServiceInterface
         );
     }
 
-    /**
-     * @inheritDoc
-     */
     public function saveCategory(Category $category): void
     {
         $this->categoryRepository->save($category);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function deleteCategory(Category $category): void
     {
         $this->categoryRepository->remove($category);

@@ -16,24 +16,24 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 /**
  * Class CategoriesController.
  */
-#[Route("/categories")]
+#[Route('/categories')]
 class CategoriesController extends AbstractController
 {
     /**
-     * Category Service
+     * Category Service.
      */
     private CategoryServiceInterface $categoryService;
 
     /**
-     * TranslatorInterface
+     * TranslatorInterface.
      */
     private TranslatorInterface $translator;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param CategoryServiceInterface $categoryService Category Service
-     * @param TranslatorInterface $translator Translator
+     * @param TranslatorInterface      $translator      Translator
      */
     public function __construct(CategoryServiceInterface $categoryService, TranslatorInterface $translator)
     {
@@ -42,9 +42,10 @@ class CategoriesController extends AbstractController
     }
 
     /**
-     * Index action
+     * Index action.
      *
      * @param Request $request HTTP Request
+     *
      * @return Response HTTP Response
      */
     #[Route('/', name: 'category_index')]
@@ -72,12 +73,12 @@ class CategoriesController extends AbstractController
         name: 'edit_category',
         methods: 'GET|PUT',
     )]
-    #[IsGranted("EDIT", subject: 'category')]
+    #[IsGranted('EDIT', subject: 'category')]
     public function editQuestion(Request $request, Category $category): Response
     {
         $form = $this->createForm(CategoryType::class, $category, [
             'method' => 'PUT',
-            'action' => $this->generateUrl('edit_category', ['slug' => $category->getSlug()])
+            'action' => $this->generateUrl('edit_category', ['slug' => $category->getSlug()]),
         ]);
         $form->handleRequest($request);
 
@@ -101,15 +102,17 @@ class CategoriesController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request $request HTTP request
+     * @param Request  $request  HTTP request
      * @param Category $category Category entity
      *
      * @return Response HTTP response
      */
-    #[Route('/{slug}/delete',
+    #[Route(
+        '/{slug}/delete',
         name: 'delete_category',
-        methods: 'GET|DELETE')]
-    #[IsGranted("DELETE", subject: 'category')]
+        methods: 'GET|DELETE'
+    )]
+    #[IsGranted('DELETE', subject: 'category')]
     public function delete(Request $request, Category $category): Response
     {
         $form = $this->createForm(
@@ -137,7 +140,7 @@ class CategoriesController extends AbstractController
             'categories/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'category' => $category
+                'category' => $category,
             ]
         );
     }
@@ -146,6 +149,7 @@ class CategoriesController extends AbstractController
      * Create action.
      *
      * @param Request $request HTTP Request
+     *
      * @return Response HTTP Response
      */
     #[Route('/create', name: 'add_category')]
@@ -171,6 +175,5 @@ class CategoriesController extends AbstractController
             'categories/add.html.twig',
             ['form' => $form->createView()]
         );
-
     }
 }

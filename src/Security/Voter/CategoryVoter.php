@@ -84,7 +84,7 @@ class CategoryVoter extends Voter
      * Checks if user can edit question.
      *
      * @param Category $category Category entity
-     * @param User $user User
+     * @param User     $user     User
      *
      * @return bool Result
      */
@@ -97,7 +97,7 @@ class CategoryVoter extends Voter
      * Checks if user can view task.
      *
      * @param Category $category Category entity
-     * @param User $user User
+     * @param User     $user     User
      *
      * @return bool Result
      */
@@ -110,7 +110,7 @@ class CategoryVoter extends Voter
      * Checks if user can delete task.
      *
      * @param Category $category Category entity
-     * @param User $user User
+     * @param User     $user     User
      *
      * @return bool Result
      */

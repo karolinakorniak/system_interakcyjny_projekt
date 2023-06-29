@@ -20,7 +20,6 @@ class Question
 {
     /**
      * Primary key.
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -29,7 +28,6 @@ class Question
 
     /**
      * Title.
-     * @var string|null
      */
     #[ORM\Column(length: 150)]
     #[Assert\Type('string')]
@@ -38,8 +36,7 @@ class Question
     private ?string $title = null;
 
     /**
-     * Slug based on title
-     * @var string|null
+     * Slug based on title.
      */
     #[ORM\Column(length: 150)]
     #[Assert\Length(min: 3, max: 150)]
@@ -47,8 +44,7 @@ class Question
     private ?string $slug = null;
 
     /**
-     * Content
-     * @var string|null
+     * Content.
      */
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank]
@@ -57,55 +53,48 @@ class Question
 
     /**
      * Created at.
-     * @var DateTimeInterface|null
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Gedmo\Timestampable(on: 'create')]
-    #[Assert\Type(DateTimeInterface::class)]
+    #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTimeInterface $created_date = null;
 
     /**
-     * Last modified at
-     * @var DateTimeInterface|null
+     * Last modified at.
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Gedmo\Timestampable(on: 'update')]
-    #[Assert\Type(DateTimeInterface::class)]
+    #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTimeInterface $last_modified_date = null;
 
-
     /**
-     * Categories of this question
-     * @var Collection
+     * Categories of this question.
      */
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'questions', fetch: "EXTRA_LAZY")]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'questions', fetch: 'EXTRA_LAZY')]
     private Collection $categories;
 
     /**
-     * Answers to this question
-     * @var Collection
+     * Answers to this question.
      */
-    #[ORM\OneToMany(mappedBy: 'question', targetEntity: Answer::class, fetch: "EXTRA_LAZY", orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'question', targetEntity: Answer::class, fetch: 'EXTRA_LAZY', orphanRemoval: true)]
     private Collection $answers;
 
     /**
-     * Best answer
-     * @var Answer|null
+     * Best answer.
      */
-    #[ORM\OneToOne(cascade: ['persist', 'remove'], fetch: "EXTRA_LAZY")]
-    #[ORM\JoinColumn(onDelete: "SET NULL")]
+    #[ORM\OneToOne(cascade: ['persist', 'remove'], fetch: 'EXTRA_LAZY')]
+    #[ORM\JoinColumn(onDelete: 'SET NULL')]
     private ?Answer $best_answer = null;
 
     /**
-     * Author
-     * @var User|null
+     * Author.
      */
-    #[ORM\ManyToOne(fetch: "EXTRA_LAZY", inversedBy: 'questions')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'questions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -114,8 +103,7 @@ class Question
     }
 
     /**
-     * Getter for id
-     * @return int|null
+     * Getter for id.
      */
     public function getId(): ?int
     {
@@ -123,8 +111,7 @@ class Question
     }
 
     /**
-     * Getter for title
-     * @return string|null
+     * Getter for title.
      */
     public function getTitle(): ?string
     {
@@ -132,8 +119,8 @@ class Question
     }
 
     /**
-     * Setter for title
-     * @param string $title
+     * Setter for title.
+     *
      * @return $this
      */
     public function setTitle(string $title): self
@@ -144,8 +131,7 @@ class Question
     }
 
     /**
-     * Getter for slug
-     * @return string|null
+     * Getter for slug.
      */
     public function getSlug(): ?string
     {
@@ -153,8 +139,8 @@ class Question
     }
 
     /**
-     * Setter for slug
-     * @param string $slug
+     * Setter for slug.
+     *
      * @return $this
      */
     public function setSlug(string $slug): self
@@ -165,8 +151,7 @@ class Question
     }
 
     /**
-     * Getter for content
-     * @return string|null
+     * Getter for content.
      */
     public function getContent(): ?string
     {
@@ -174,8 +159,8 @@ class Question
     }
 
     /**
-     * Setter for content
-     * @param string $content
+     * Setter for content.
+     *
      * @return $this
      */
     public function setContent(string $content): self
@@ -186,8 +171,7 @@ class Question
     }
 
     /**
-     * Getter for create at
-     * @return DateTimeInterface|null
+     * Getter for create at.
      */
     public function getCreatedDate(): ?\DateTimeInterface
     {
@@ -195,8 +179,8 @@ class Question
     }
 
     /**
-     * Setter for created at
-     * @param DateTimeInterface $created_date
+     * Setter for created at.
+     *
      * @return $this
      */
     public function setCreatedDate(\DateTimeInterface $created_date): self
@@ -207,8 +191,7 @@ class Question
     }
 
     /**
-     * Getter for last modified at
-     * @return DateTimeInterface|null
+     * Getter for last modified at.
      */
     public function getLastModifiedDate(): ?\DateTimeInterface
     {
@@ -216,8 +199,8 @@ class Question
     }
 
     /**
-     * Setter for last modified at
-     * @param DateTimeInterface $last_modified_date
+     * Setter for last modified at.
+     *
      * @return $this
      */
     public function setLastModifiedDate(\DateTimeInterface $last_modified_date): self
@@ -228,8 +211,7 @@ class Question
     }
 
     /**
-     * Getter for author
-     * @return User|null
+     * Getter for author.
      */
     public function getAuthor(): ?User
     {
@@ -237,8 +219,8 @@ class Question
     }
 
     /**
-     * Setter for author
-     * @param User|null $author
+     * Setter for author.
+     *
      * @return $this
      */
     public function setAuthor(?User $author): self
@@ -249,7 +231,8 @@ class Question
     }
 
     /**
-     * Getter for categories
+     * Getter for categories.
+     *
      * @return Collection<int, Category>
      */
     public function getCategories(): Collection
@@ -258,8 +241,8 @@ class Question
     }
 
     /**
-     * Add category
-     * @param Category $category
+     * Add category.
+     *
      * @return $this
      */
     public function addCategory(Category $category): self
@@ -272,8 +255,8 @@ class Question
     }
 
     /**
-     * Remove category
-     * @param Category $category
+     * Remove category.
+     *
      * @return $this
      */
     public function removeCategory(Category $category): self
@@ -284,7 +267,8 @@ class Question
     }
 
     /**
-     * Getter for answers
+     * Getter for answers.
+     *
      * @return Collection<int, Answer>
      */
     public function getAnswers(): Collection
@@ -293,8 +277,8 @@ class Question
     }
 
     /**
-     * Add answer
-     * @param Answer $answer
+     * Add answer.
+     *
      * @return $this
      */
     public function addAnswer(Answer $answer): self
@@ -308,8 +292,8 @@ class Question
     }
 
     /**
-     * Remove an answer
-     * @param Answer $answer
+     * Remove an answer.
+     *
      * @return $this
      */
     public function removeAnswer(Answer $answer): self
@@ -325,8 +309,7 @@ class Question
     }
 
     /**
-     * Getter for best answer
-     * @return Answer|null
+     * Getter for best answer.
      */
     public function getBestAnswer(): ?Answer
     {
@@ -334,8 +317,8 @@ class Question
     }
 
     /**
-     * Setter for best answer
-     * @param Answer|null $best_answer
+     * Setter for best answer.
+     *
      * @return $this
      */
     public function setBestAnswer(?Answer $best_answer): self

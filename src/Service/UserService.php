@@ -7,28 +7,24 @@ use App\Repository\UserRepository;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
- * Class UserService
+ * Class UserService.
  */
 class UserService implements UserServiceInterface
 {
-
     /**
-     * User Repository
+     * User Repository.
      */
     private UserRepository $userRepository;
-
 
     /**
      * Password hasher.
      */
     private UserPasswordHasherInterface $passwordHasher;
 
-
     /**
-     * Constructor
+     * Constructor.
      *
      * @param UserRepository $userRepository User Repository
-     * @param UserPasswordHasherInterface $passwordHasher
      */
     public function __construct(UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher)
     {
@@ -36,17 +32,11 @@ class UserService implements UserServiceInterface
         $this->passwordHasher = $passwordHasher;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function saveUser(User $user): void
     {
         $this->userRepository->save($user);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function updatePassword(User $user, string $newPassword): void
     {
         $hashedPassword = $this->passwordHasher->hashPassword($user, $newPassword);

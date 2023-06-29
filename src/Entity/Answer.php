@@ -18,7 +18,6 @@ class Answer
 {
     /**
      * Primary key.
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -27,7 +26,6 @@ class Answer
 
     /**
      * Username.
-     * @var string|null
      */
     #[ORM\Column(length: 191)]
     #[Assert\Type('string')]
@@ -37,7 +35,6 @@ class Answer
 
     /**
      * Email.
-     * @var string|null
      */
     #[ORM\Column(length: 191)]
     #[Assert\Type('string')]
@@ -47,7 +44,6 @@ class Answer
 
     /**
      * Content.
-     * @var string|null
      */
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\Type('string')]
@@ -57,31 +53,27 @@ class Answer
 
     /**
      * Created at.
-     * @var DateTimeInterface|null
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Assert\Type(DateTimeInterface::class)]
+    #[Assert\Type(\DateTimeInterface::class)]
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeInterface $date = null;
 
     /**
      * Is marked as deleted.
-     * @var bool|null
      */
     #[ORM\Column]
     private ?bool $is_deleted = null;
 
     /**
-     * Related Question
-     * @var Question|null
+     * Related Question.
      */
-    #[ORM\ManyToOne(fetch: "EXTRA_LAZY", inversedBy: 'answers')]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY', inversedBy: 'answers')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Question $question = null;
 
     /**
      * Getter for id.
-     * @return int|null
      */
     public function getId(): ?int
     {
@@ -90,7 +82,6 @@ class Answer
 
     /**
      * Getter for username.
-     * @return string|null
      */
     public function getUsername(): ?string
     {
@@ -99,7 +90,7 @@ class Answer
 
     /**
      * Setter for username.
-     * @param string $username
+     *
      * @return $this
      */
     public function setUsername(string $username): self
@@ -111,7 +102,6 @@ class Answer
 
     /**
      * Getter for email.
-     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -120,7 +110,7 @@ class Answer
 
     /**
      * Setter for email.
-     * @param string $email
+     *
      * @return $this
      */
     public function setEmail(string $email): self
@@ -132,7 +122,6 @@ class Answer
 
     /**
      * Getter for content.
-     * @return string|null
      */
     public function getContent(): ?string
     {
@@ -141,7 +130,7 @@ class Answer
 
     /**
      * Setter for content.
-     * @param string $content
+     *
      * @return $this
      */
     public function setContent(string $content): self
@@ -153,7 +142,6 @@ class Answer
 
     /**
      * Getter for created at date.
-     * @return DateTimeInterface|null
      */
     public function getDate(): ?\DateTimeInterface
     {
@@ -162,7 +150,7 @@ class Answer
 
     /**
      * Setter for created at date.
-     * @param DateTimeInterface $date
+     *
      * @return $this
      */
     public function setDate(\DateTimeInterface $date): self
@@ -173,8 +161,7 @@ class Answer
     }
 
     /**
-     * Getter for isDeleted
-     * @return bool|null
+     * Getter for isDeleted.
      */
     public function isIsDeleted(): ?bool
     {
@@ -183,7 +170,7 @@ class Answer
 
     /**
      * Setter for isDeleted.
-     * @param bool $is_deleted
+     *
      * @return $this
      */
     public function setIsDeleted(bool $is_deleted): self
@@ -194,8 +181,7 @@ class Answer
     }
 
     /**
-     * Getter for Question
-     * @return Question|null
+     * Getter for Question.
      */
     public function getQuestion(): ?Question
     {
@@ -203,8 +189,8 @@ class Answer
     }
 
     /**
-     * Setter for Question
-     * @param Question|null $question
+     * Setter for Question.
+     *
      * @return $this
      */
     public function setQuestion(?Question $question): self

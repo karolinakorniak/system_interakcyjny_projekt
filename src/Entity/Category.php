@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Category
+ * Class Category.
  */
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ORM\Table(name: 'categories')]
@@ -20,7 +20,6 @@ class Category
 {
     /**
      * Primary key.
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -29,7 +28,6 @@ class Category
 
     /**
      * Name.
-     * @var string|null
      */
     #[ORM\Column(length: 64)]
     #[Assert\Type('string')]
@@ -38,7 +36,6 @@ class Category
 
     /**
      * Slug created based on name.
-     * @var string|null
      */
     #[ORM\Column(length: 64)]
     #[Gedmo\Slug(fields: ['name'])]
@@ -47,22 +44,20 @@ class Category
     private ?string $slug = null;
 
     /**
-     * Author
-     * @var User|null
+     * Author.
      */
-    #[ORM\ManyToOne(fetch: "EXTRA_LAZY")]
+    #[ORM\ManyToOne(fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
     /**
-     * Questions in this category
-     * @var Collection
+     * Questions in this category.
      */
-    #[ORM\ManyToMany(targetEntity: Question::class, mappedBy: 'categories', fetch: "EXTRA_LAZY")]
+    #[ORM\ManyToMany(targetEntity: Question::class, mappedBy: 'categories', fetch: 'EXTRA_LAZY')]
     private Collection $questions;
 
     /**
-     *  Constructor
+     *  Constructor.
      */
     public function __construct()
     {
@@ -71,7 +66,6 @@ class Category
 
     /**
      * Getter for id.
-     * @return int|null
      */
     public function getId(): ?int
     {
@@ -79,8 +73,7 @@ class Category
     }
 
     /**
-     * Getter for name
-     * @return string|null
+     * Getter for name.
      */
     public function getName(): ?string
     {
@@ -88,8 +81,8 @@ class Category
     }
 
     /**
-     * Setter for name
-     * @param string $name
+     * Setter for name.
+     *
      * @return $this
      */
     public function setName(string $name): self
@@ -100,8 +93,7 @@ class Category
     }
 
     /**
-     * Getter for slug
-     * @return string|null
+     * Getter for slug.
      */
     public function getSlug(): ?string
     {
@@ -109,8 +101,8 @@ class Category
     }
 
     /**
-     * Setter for slug
-     * @param string $slug
+     * Setter for slug.
+     *
      * @return $this
      */
     public function setSlug(string $slug): self
@@ -121,8 +113,7 @@ class Category
     }
 
     /**
-     * Getter for author
-     * @return User|null
+     * Getter for author.
      */
     public function getAuthor(): ?User
     {
@@ -130,8 +121,8 @@ class Category
     }
 
     /**
-     * Setter for author
-     * @param User|null $author
+     * Setter for author.
+     *
      * @return $this
      */
     public function setAuthor(?User $author): self
@@ -142,7 +133,8 @@ class Category
     }
 
     /**
-     * Getter for Question
+     * Getter for Question.
+     *
      * @return Collection<int, Question>
      */
     public function getQuestions(): Collection
@@ -151,8 +143,8 @@ class Category
     }
 
     /**
-     * Add a question
-     * @param Question $question
+     * Add a question.
+     *
      * @return $this
      */
     public function addQuestion(Question $question): self
@@ -166,8 +158,8 @@ class Category
     }
 
     /**
-     * Remove a question
-     * @param Question $question
+     * Remove a question.
+     *
      * @return $this
      */
     public function removeQuestion(Question $question): self

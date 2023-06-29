@@ -3,27 +3,26 @@
 namespace App\Service;
 
 use App\Repository\AnswerRepository;
-use Doctrine\ORM\QueryBuilder;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 class AnswerService implements AnswerServiceInterface
 {
     /**
-     * Answer repository
+     * Answer repository.
      */
     private AnswerRepository $answerRepository;
 
     /**
-     * Paginator
+     * Paginator.
      */
     private PaginatorInterface $paginator;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param AnswerRepository $answerRepository Answer repository
-     * @param PaginatorInterface $paginator Paginator
+     * @param AnswerRepository   $answerRepository Answer repository
+     * @param PaginatorInterface $paginator        Paginator
      */
     public function __construct(AnswerRepository $answerRepository, PaginatorInterface $paginator)
     {
