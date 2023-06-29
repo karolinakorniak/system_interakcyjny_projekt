@@ -86,7 +86,7 @@ class Question
      */
     #[ORM\OneToOne(cascade: ['persist', 'remove'], fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(onDelete: 'SET NULL')]
-    private ?Answer $best_answer = null;
+    private ?Answer $bestAnswer = null;
 
     /**
      * Author.
@@ -351,19 +351,19 @@ class Question
      */
     public function getBestAnswer(): ?Answer
     {
-        return $this->best_answer;
+        return $this->bestAnswer;
     }
 
     /**
      * Setter for best answer.
      *
-     * @param Answer|null $best_answer Answer entity
+     * @param Answer|null $bestAnswer Answer entity
      *
      * @return $this
      */
-    public function setBestAnswer(?Answer $best_answer): self
+    public function setBestAnswer(?Answer $bestAnswer): self
     {
-        $this->best_answer = $best_answer;
+        $this->bestAnswer = $bestAnswer;
 
         return $this;
     }
