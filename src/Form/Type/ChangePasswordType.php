@@ -1,4 +1,7 @@
 <?php
+/**
+ * Change Password Type.
+ */
 
 namespace App\Form\Type;
 

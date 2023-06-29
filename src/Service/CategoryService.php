@@ -1,4 +1,7 @@
 <?php
+/**
+ * Category service.
+ */
 
 namespace App\Service;
 
@@ -34,6 +37,13 @@ class CategoryService implements CategoryServiceInterface
         $this->paginator = $paginator;
     }
 
+    /**
+     * Get paginated list.
+     *
+     * @param int $page Current page
+     *
+     * @return PaginationInterface Pagination
+     */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
@@ -43,16 +53,33 @@ class CategoryService implements CategoryServiceInterface
         );
     }
 
+    /**
+     * Save Category.
+     *
+     * @param Category $category Category entity
+     */
     public function saveCategory(Category $category): void
     {
         $this->categoryRepository->save($category);
     }
 
+    /**
+     * Delete Category.
+     *
+     * @param Category $category Category entity
+     */
     public function deleteCategory(Category $category): void
     {
         $this->categoryRepository->remove($category);
     }
 
+    /**
+     * Find category by name.
+     *
+     * @param string $name Name
+     *
+     * @return Category|null Category entity
+     */
     public function findOneByName(string $name): ?Category
     {
         return $this->categoryRepository->findOneByName($name);

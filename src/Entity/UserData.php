@@ -1,4 +1,7 @@
 <?php
+/**
+ * User Data entity.
+ */
 
 namespace App\Entity;
 
@@ -47,6 +50,8 @@ class UserData
 
     /**
      * Getter for id.
+     *
+     * @return int|null Id
      */
     public function getId(): ?int
     {
@@ -55,6 +60,8 @@ class UserData
 
     /**
      * Getter for User.
+     *
+     * @return User|null User entity
      */
     public function getUser(): ?User
     {
@@ -63,6 +70,8 @@ class UserData
 
     /**
      * Setter for User.
+     *
+     * @param User $user User entity
      *
      * @return $this
      */
@@ -75,6 +84,8 @@ class UserData
 
     /**
      * Getter for name.
+     *
+     * @return string|null Name
      */
     public function getName(): ?string
     {
@@ -83,6 +94,8 @@ class UserData
 
     /**
      * Setter for name.
+     *
+     * @param string $name Name to set
      *
      * @return $this
      */
@@ -95,6 +108,8 @@ class UserData
 
     /**
      * Getter for description.
+     *
+     * @return string|null Description
      */
     public function getDescription(): ?string
     {
@@ -103,6 +118,8 @@ class UserData
 
     /**
      * Setter for description.
+     *
+     * @param string $description Description to set
      *
      * @return $this
      */

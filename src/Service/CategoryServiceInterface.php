@@ -1,4 +1,7 @@
 <?php
+/**
+ * Category servuce interface.
+ */
 
 namespace App\Service;
 
@@ -28,6 +31,8 @@ interface CategoryServiceInterface
 
     /**
      * Delete category.
+     *
+     * @param Category $category Category entity
      */
     public function deleteCategory(Category $category): void;
 

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Answer service.
+ */
 
 namespace App\Service;
 
@@ -6,6 +9,9 @@ use App\Repository\AnswerRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
+/**
+ * Class AnswerService.
+ */
 class AnswerService implements AnswerServiceInterface
 {
     /**
@@ -30,6 +36,14 @@ class AnswerService implements AnswerServiceInterface
         $this->paginator = $paginator;
     }
 
+    /**
+     * Get paginated answers to a question.
+     *
+     * @param int $id   Question id
+     * @param int $page Current page
+     *
+     * @return PaginationInterface Pagination
+     */
     public function getPaginatedListForQuestion(int $id, int $page): PaginationInterface
     {
         return $this->paginator->paginate(

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Category Type.
+ */
 
 namespace App\Form\Type;
 

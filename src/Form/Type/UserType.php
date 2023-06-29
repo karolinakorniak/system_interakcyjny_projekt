@@ -1,4 +1,7 @@
 <?php
+/**
+ * User Type.
+ */
 
 namespace App\Form\Type;
 

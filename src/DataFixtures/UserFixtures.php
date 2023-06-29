@@ -15,7 +15,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
  */
 class UserFixtures extends AbstractBaseFixtures
 {
-    public static int $USER_COUNT = 2;
+    public static int $userCount = 2;
 
     /**
      * Password hasher.
@@ -37,7 +37,7 @@ class UserFixtures extends AbstractBaseFixtures
      */
     public function loadData(): void
     {
-        $this->createMany(self::$USER_COUNT, 'users', function ($i) {
+        $this->createMany(self::$userCount, 'users', function ($i) {
             $user = new User();
             $user->setEmail(sprintf('admin%d@example.com', $i));
             $user->setRoles([UserRole::ROLE_ADMIN->value]);

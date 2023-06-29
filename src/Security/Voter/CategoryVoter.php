@@ -1,4 +1,7 @@
 <?php
+/**
+ * Category Voter.
+ */
 
 namespace App\Security\Voter;
 

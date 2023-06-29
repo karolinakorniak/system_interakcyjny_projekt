@@ -1,4 +1,7 @@
 <?php
+/**
+ * Question service.
+ */
 
 namespace App\Service;
 
@@ -33,18 +36,23 @@ class QuestionService implements QuestionServiceInterface
      * Constructor.
      *
      * @param QuestionRepository $questionRepository Question repository
+     * @param AnswerRepository   $answerRepository   Answer repository
      * @param PaginatorInterface $paginator          Paginator
      */
-    public function __construct(
-        QuestionRepository $questionRepository,
-        AnswerRepository $answerRepository,
-        PaginatorInterface $paginator
-    ) {
+    public function __construct(QuestionRepository $questionRepository, AnswerRepository $answerRepository, PaginatorInterface $paginator)
+    {
         $this->questionRepository = $questionRepository;
         $this->answerRepository = $answerRepository;
         $this->paginator = $paginator;
     }
 
+    /**
+     * Get paginated list of questions.
+     *
+     * @param int $page Current page
+     *
+     * @return PaginationInterface Pagination
+     */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
@@ -58,6 +66,14 @@ class QuestionService implements QuestionServiceInterface
         );
     }
 
+    /**
+     * Get paginated list of questions in given category.
+     *
+     * @param int    $page         Current page
+     * @param string $categorySlug category slug
+     *
+     * @return PaginationInterface Pagination
+     */
     public function getPaginatedListByCategory(int $page, string $categorySlug): PaginationInterface
     {
         return $this->paginator->paginate(
@@ -71,6 +87,12 @@ class QuestionService implements QuestionServiceInterface
         );
     }
 
+    /**
+     * Save answer to a question.
+     *
+     * @param Answer   $answer   Answer entity
+     * @param Question $question Question entity
+     */
     public function saveAnswer(Answer $answer, Question $question): void
     {
         $answer->setQuestion($question);
@@ -78,22 +100,43 @@ class QuestionService implements QuestionServiceInterface
         $this->answerRepository->save($answer);
     }
 
+    /**
+     * Save question.
+     *
+     * @param Question $question Question entity
+     */
     public function saveQuestion(Question $question): void
     {
         $this->questionRepository->save($question);
     }
 
+    /**
+     * Delete question.
+     *
+     * @param Question $question Question entity
+     */
     public function deleteQuestion(Question $question): void
     {
         $this->questionRepository->remove($question);
     }
 
+    /**
+     * Mark answer as deleted.
+     *
+     * @param Answer $answer Answer entity
+     */
     public function markAnswerAsDeleted(Answer $answer): void
     {
         $answer->setIsDeleted(true);
         $this->answerRepository->save($answer);
     }
 
+    /**
+     * Mark answer as best answer to given question.
+     *
+     * @param Question $question Question entity
+     * @param int      $id       Answer id
+     */
     public function markAnswerAsBest(Question $question, int $id): void
     {
         $answer = $this->answerRepository->find($id);

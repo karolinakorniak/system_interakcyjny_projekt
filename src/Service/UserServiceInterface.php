@@ -1,4 +1,7 @@
 <?php
+/**
+ * User service interface.
+ */
 
 namespace App\Service;
 

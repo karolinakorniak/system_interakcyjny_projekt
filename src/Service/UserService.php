@@ -1,4 +1,7 @@
 <?php
+/**
+ * User Service.
+ */
 
 namespace App\Service;
 
@@ -24,7 +27,8 @@ class UserService implements UserServiceInterface
     /**
      * Constructor.
      *
-     * @param UserRepository $userRepository User Repository
+     * @param UserRepository              $userRepository User Repository
+     * @param UserPasswordHasherInterface $passwordHasher Password hasher
      */
     public function __construct(UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher)
     {
@@ -32,11 +36,22 @@ class UserService implements UserServiceInterface
         $this->passwordHasher = $passwordHasher;
     }
 
+    /**
+     * Save user.
+     *
+     * @param User $user User entity
+     */
     public function saveUser(User $user): void
     {
         $this->userRepository->save($user);
     }
 
+    /**
+     * Update user's password.
+     *
+     * @param User   $user        User entity
+     * @param string $newPassword New password
+     */
     public function updatePassword(User $user, string $newPassword): void
     {
         $hashedPassword = $this->passwordHasher->hashPassword($user, $newPassword);

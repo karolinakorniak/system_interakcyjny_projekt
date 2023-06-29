@@ -1,4 +1,7 @@
 <?php
+/**
+ * Category fixtures.
+ */
 
 namespace App\DataFixtures;
 
@@ -12,7 +15,17 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
-     * Load data.
+     * Depends on UserFixtures.
+     *
+     * @return string[]
+     */
+    public function getDependencies(): array
+    {
+        return [UserFixtures::class];
+    }
+
+    /**
+     * Load the data.
      */
     protected function loadData(): void
     {
@@ -27,10 +40,5 @@ class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureI
         });
 
         $this->manager->flush();
-    }
-
-    public function getDependencies()
-    {
-        return [UserFixtures::class];
     }
 }

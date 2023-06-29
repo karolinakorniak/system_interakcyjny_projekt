@@ -32,6 +32,7 @@ class CategoriesDataTransformer implements DataTransformerInterface
      * Constructor.
      *
      * @param CategoryServiceInterface $categoryService Category service
+     * @param Security                 $security        Security
      */
     public function __construct(CategoryServiceInterface $categoryService, Security $security)
     {

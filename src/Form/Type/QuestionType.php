@@ -1,4 +1,7 @@
 <?php
+/**
+ * Question Type.
+ */
 
 namespace App\Form\Type;
 
@@ -22,6 +25,8 @@ class QuestionType extends AbstractType
 
     /**
      * Constructor.
+     *
+     * @param CategoriesDataTransformer $categoriesDataTransformer Transformer for categories
      */
     public function __construct(CategoriesDataTransformer $categoriesDataTransformer)
     {

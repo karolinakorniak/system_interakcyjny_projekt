@@ -52,12 +52,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank]
     private ?string $password;
 
+    /**
+     * Related UserData entity.
+     */
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'], fetch: 'EXTRA_LAZY')]
     private ?UserData $userData = null;
 
+    /**
+     * Related Question entities.
+     */
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: Question::class, fetch: 'EXTRA_LAZY', orphanRemoval: true)]
     private Collection $questions;
 
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this->questions = new ArrayCollection();
@@ -161,11 +170,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->password = $password;
     }
 
+    /**
+     * Getter for UserData.
+     *
+     * @return UserData|null UserData entity
+     */
     public function getUserData(): ?UserData
     {
         return $this->userData;
     }
 
+    /**
+     * Setter for UserData.
+     *
+     * @param UserData $userData UserData entity
+     *
+     * @return $this
+     */
     public function setUserData(UserData $userData): self
     {
         // set the owning side of the relation if necessary
@@ -179,6 +200,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
+     * Getter for questions.
+     *
      * @return Collection<int, Question>
      */
     public function getQuestions(): Collection
@@ -186,6 +209,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->questions;
     }
 
+    /**
+     * Add a Question.
+     *
+     * @param Question $question Question entity
+     *
+     * @return $this
+     */
     public function addQuestion(Question $question): self
     {
         if (!$this->questions->contains($question)) {
@@ -196,6 +226,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * Remove a Question.
+     *
+     * @param Question $question Question entity
+     *
+     * @return $this
+     */
     public function removeQuestion(Question $question): self
     {
         if ($this->questions->removeElement($question)) {
@@ -211,6 +248,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Returning a salt is only needed, if you are not using a modern
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @return string|null Salt
      *
      * @see UserInterface
      */

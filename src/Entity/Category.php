@@ -1,4 +1,7 @@
 <?php
+/**
+ * Category entity.
+ */
 
 namespace App\Entity;
 
@@ -66,6 +69,8 @@ class Category
 
     /**
      * Getter for id.
+     *
+     * @return int|null Id
      */
     public function getId(): ?int
     {
@@ -74,6 +79,8 @@ class Category
 
     /**
      * Getter for name.
+     *
+     * @return string|null Name
      */
     public function getName(): ?string
     {
@@ -82,6 +89,8 @@ class Category
 
     /**
      * Setter for name.
+     *
+     * @param string $name Name to set
      *
      * @return $this
      */
@@ -94,6 +103,8 @@ class Category
 
     /**
      * Getter for slug.
+     *
+     * @return string|null Slug
      */
     public function getSlug(): ?string
     {
@@ -102,6 +113,8 @@ class Category
 
     /**
      * Setter for slug.
+     *
+     * @param string $slug Slug to set
      *
      * @return $this
      */
@@ -114,6 +127,8 @@ class Category
 
     /**
      * Getter for author.
+     *
+     * @return User|null User entity
      */
     public function getAuthor(): ?User
     {
@@ -122,6 +137,8 @@ class Category
 
     /**
      * Setter for author.
+     *
+     * @param User|null $author Author entity
      *
      * @return $this
      */
@@ -145,6 +162,8 @@ class Category
     /**
      * Add a question.
      *
+     * @param Question $question Question entity
+     *
      * @return $this
      */
     public function addQuestion(Question $question): self
@@ -159,6 +178,8 @@ class Category
 
     /**
      * Remove a question.
+     *
+     * @param Question $question Question entity
      *
      * @return $this
      */

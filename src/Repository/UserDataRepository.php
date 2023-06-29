@@ -1,4 +1,7 @@
 <?php
+/**
+ * User data repository.
+ */
 
 namespace App\Repository;
 
@@ -16,51 +19,35 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class UserDataRepository extends ServiceEntityRepository
 {
+    /**
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry ManagerRegistry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, UserData::class);
     }
 
-    public function save(UserData $entity, bool $flush = false): void
+    /**
+     * Save UserData.
+     *
+     * @param UserData $entity UserData entity
+     */
+    public function save(UserData $entity): void
     {
         $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->getEntityManager()->flush();
     }
 
-    public function remove(UserData $entity, bool $flush = false): void
+    /**
+     * Remove UserData.
+     *
+     * @param UserData $entity UserData entity
+     */
+    public function remove(UserData $entity): void
     {
         $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->getEntityManager()->flush();
     }
-
-    //    /**
-    //     * @return UserData[] Returns an array of UserData objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('u')
-    //            ->andWhere('u.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('u.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?UserData
-    //    {
-    //        return $this->createQueryBuilder('u')
-    //            ->andWhere('u.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
 }

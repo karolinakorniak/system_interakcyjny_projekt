@@ -1,4 +1,7 @@
 <?php
+/**
+ * Answer service interface.
+ */
 
 namespace App\Service;
 

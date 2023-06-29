@@ -1,9 +1,11 @@
 <?php
+/**
+ * Question entity.
+ */
 
 namespace App\Entity;
 
 use App\Repository\QuestionRepository;
-use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -104,6 +106,8 @@ class Question
 
     /**
      * Getter for id.
+     *
+     * @return int|null Id
      */
     public function getId(): ?int
     {
@@ -112,6 +116,8 @@ class Question
 
     /**
      * Getter for title.
+     *
+     * @return string|null Title
      */
     public function getTitle(): ?string
     {
@@ -120,6 +126,8 @@ class Question
 
     /**
      * Setter for title.
+     *
+     * @param string $title Title to set
      *
      * @return $this
      */
@@ -132,6 +140,8 @@ class Question
 
     /**
      * Getter for slug.
+     *
+     * @return string|null Slug
      */
     public function getSlug(): ?string
     {
@@ -140,6 +150,8 @@ class Question
 
     /**
      * Setter for slug.
+     *
+     * @param string $slug Slug to set
      *
      * @return $this
      */
@@ -152,6 +164,8 @@ class Question
 
     /**
      * Getter for content.
+     *
+     * @return string|null Content
      */
     public function getContent(): ?string
     {
@@ -160,6 +174,8 @@ class Question
 
     /**
      * Setter for content.
+     *
+     * @param string $content Content to set
      *
      * @return $this
      */
@@ -172,6 +188,8 @@ class Question
 
     /**
      * Getter for create at.
+     *
+     * @return \DateTimeInterface|null CreatedAt date
      */
     public function getCreatedDate(): ?\DateTimeInterface
     {
@@ -180,6 +198,8 @@ class Question
 
     /**
      * Setter for created at.
+     *
+     * @param \DateTimeInterface $created_date Date to set
      *
      * @return $this
      */
@@ -192,6 +212,8 @@ class Question
 
     /**
      * Getter for last modified at.
+     *
+     * @return \DateTimeInterface|null LastModifiedAt date
      */
     public function getLastModifiedDate(): ?\DateTimeInterface
     {
@@ -200,6 +222,8 @@ class Question
 
     /**
      * Setter for last modified at.
+     *
+     * @param \DateTimeInterface $last_modified_date Date to set
      *
      * @return $this
      */
@@ -212,6 +236,8 @@ class Question
 
     /**
      * Getter for author.
+     *
+     * @return User|null Author
      */
     public function getAuthor(): ?User
     {
@@ -220,6 +246,8 @@ class Question
 
     /**
      * Setter for author.
+     *
+     * @param User|null $author Author to set
      *
      * @return $this
      */
@@ -233,7 +261,7 @@ class Question
     /**
      * Getter for categories.
      *
-     * @return Collection<int, Category>
+     * @return Collection<int, Category> Categories
      */
     public function getCategories(): Collection
     {
@@ -242,6 +270,8 @@ class Question
 
     /**
      * Add category.
+     *
+     * @param Category $category Category entity
      *
      * @return $this
      */
@@ -257,6 +287,8 @@ class Question
     /**
      * Remove category.
      *
+     * @param Category $category Category entity
+     *
      * @return $this
      */
     public function removeCategory(Category $category): self
@@ -269,7 +301,7 @@ class Question
     /**
      * Getter for answers.
      *
-     * @return Collection<int, Answer>
+     * @return Collection<int, Answer> Answers
      */
     public function getAnswers(): Collection
     {
@@ -278,6 +310,8 @@ class Question
 
     /**
      * Add answer.
+     *
+     * @param Answer $answer Answer entity
      *
      * @return $this
      */
@@ -293,6 +327,8 @@ class Question
 
     /**
      * Remove an answer.
+     *
+     * @param Answer $answer Answer entity
      *
      * @return $this
      */
@@ -310,6 +346,8 @@ class Question
 
     /**
      * Getter for best answer.
+     *
+     * @return Answer|null Best answer, if it exists
      */
     public function getBestAnswer(): ?Answer
     {
@@ -318,6 +356,8 @@ class Question
 
     /**
      * Setter for best answer.
+     *
+     * @param Answer|null $best_answer Answer entity
      *
      * @return $this
      */

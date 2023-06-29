@@ -1,4 +1,7 @@
 <?php
+/**
+ * Profile controller.
+ */
 
 namespace App\Controller;
 
@@ -39,11 +42,8 @@ class ProfileController extends AbstractController
      * @param TranslatorInterface         $translator     Translator
      * @param UserServiceInterface        $userService    User Service
      */
-    public function __construct(
-        UserPasswordHasherInterface $passwordHasher,
-        TranslatorInterface $translator,
-        UserServiceInterface $userService
-    ) {
+    public function __construct(UserPasswordHasherInterface $passwordHasher, TranslatorInterface $translator, UserServiceInterface $userService)
+    {
         $this->passwordHasher = $passwordHasher;
         $this->translator = $translator;
         $this->userService = $userService;

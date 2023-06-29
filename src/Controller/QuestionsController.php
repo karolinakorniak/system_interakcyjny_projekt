@@ -1,4 +1,7 @@
 <?php
+/**
+ * Questions controller.
+ */
 
 namespace App\Controller;
 
@@ -43,12 +46,10 @@ class QuestionsController extends AbstractController
      *
      * @param QuestionServiceInterface $questionService Question Service
      * @param TranslatorInterface      $translator      Translator
+     * @param AnswerServiceInterface   $answerService   Answers service
      */
-    public function __construct(
-        QuestionServiceInterface $questionService,
-        TranslatorInterface $translator,
-        AnswerServiceInterface $answerService
-    ) {
+    public function __construct(QuestionServiceInterface $questionService, TranslatorInterface $translator, AnswerServiceInterface $answerService)
+    {
         $this->questionService = $questionService;
         $this->translator = $translator;
         $this->answerService = $answerService;
@@ -113,7 +114,8 @@ class QuestionsController extends AbstractController
     /**
      * Edit a question.
      *
-     * @param Request $request HTTP request
+     * @param Request  $request  HTTP request
+     * @param Question $question Question entity
      *
      * @return Response HTTP response
      */
@@ -198,6 +200,7 @@ class QuestionsController extends AbstractController
      * Show single Question action.
      *
      * @param Question $question Question entity
+     * @param Request  $request  HTTP Request
      *
      * @return Response HTTP Response
      */
@@ -222,17 +225,14 @@ class QuestionsController extends AbstractController
      * List Questions in a category.
      *
      * @param Request  $request  HTTP Request
-     * @param string   $slug     categorie's slug
+     * @param string   $slug     categories slug
      * @param Category $category Category entity
      *
      * @return Response HTTP Response
      */
     #[Route('/byCategory/{slug}', name: 'question_by_category')]
-    public function byCategory(
-        Request $request,
-        string $slug,
-        Category $category
-    ): Response {
+    public function byCategory(Request $request, string $slug, Category $category): Response
+    {
         $pagination = $this->questionService->getPaginatedListByCategory(
             $request->query->getInt('page', 1),
             $slug
@@ -247,7 +247,9 @@ class QuestionsController extends AbstractController
     /**
      * Add answer to a question.
      *
-     * @param Request $request HTTP request
+     * @param Request  $request  HTTP request
+     * @param Question $question Question enitity
+     * @param string   $slug     categories slug
      *
      * @return Response HTTP response
      */
@@ -256,7 +258,7 @@ class QuestionsController extends AbstractController
         name: 'add_answer',
         methods: 'GET|POST',
     )]
-    public function addAnswer(Request $request, Question $question, $slug): Response
+    public function addAnswer(Request $request, Question $question, string $slug): Response
     {
         $answer = new Answer();
         $form = $this->createForm(AnswerType::class, $answer);

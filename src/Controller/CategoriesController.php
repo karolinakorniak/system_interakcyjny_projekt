@@ -1,4 +1,7 @@
 <?php
+/**
+ * Categories controller.
+ */
 
 namespace App\Controller;
 
@@ -64,7 +67,8 @@ class CategoriesController extends AbstractController
     /**
      * Edit action.
      *
-     * @param Request $request HTTP request
+     * @param Request  $request  HTTP request
+     * @param Category $category Category entity
      *
      * @return Response HTTP response
      */

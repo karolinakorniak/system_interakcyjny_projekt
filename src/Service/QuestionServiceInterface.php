@@ -1,4 +1,7 @@
 <?php
+/**
+ * Question service interface.
+ */
 
 namespace App\Service;
 
@@ -47,11 +50,15 @@ interface QuestionServiceInterface
 
     /**
      * Delete a question.
+     *
+     * @param Question $question Question entity
      */
     public function deleteQuestion(Question $question): void;
 
     /**
      * Mark answer as deleted.
+     *
+     * @param Answer $answer Answer entity
      */
     public function markAnswerAsDeleted(Answer $answer): void;
 

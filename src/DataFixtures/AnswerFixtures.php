@@ -1,4 +1,7 @@
 <?php
+/**
+ * Answers fixtures.
+ */
 
 namespace App\DataFixtures;
 
@@ -11,6 +14,16 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
  */
 class AnswerFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
+    /**
+     * Depends on Question Fixtures.
+     *
+     * @return string[]
+     */
+    public function getDependencies(): array
+    {
+        return [QuestionFixtures::class];
+    }
+
     /**
      * Load data.
      */
@@ -35,15 +48,5 @@ class AnswerFixtures extends AbstractBaseFixtures implements DependentFixtureInt
         });
 
         $this->manager->flush();
-    }
-
-    /**
-     * Returns dependencies.
-     *
-     * @return string[]
-     */
-    public function getDependencies()
-    {
-        return [QuestionFixtures::class];
     }
 }

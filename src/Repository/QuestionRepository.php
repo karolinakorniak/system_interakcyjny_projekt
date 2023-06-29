@@ -1,4 +1,7 @@
 <?php
+/**
+ * Question repository.
+ */
 
 namespace App\Repository;
 
@@ -17,19 +20,37 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class QuestionRepository extends ServiceEntityRepository
 {
+    /**
+     * Number of items per page.
+     */
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
+    /**
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry ManagerRegistry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Question::class);
     }
 
+    /**
+     * Save Question.
+     *
+     * @param Question $entity Question entity
+     */
     public function save(Question $entity): void
     {
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
     }
 
+    /**
+     * Remove Question.
+     *
+     * @param Question $entity Question entity
+     */
     public function remove(Question $entity): void
     {
         $this->getEntityManager()->remove($entity);
@@ -51,6 +72,10 @@ class QuestionRepository extends ServiceEntityRepository
 
     /**
      * Query questions that belong to a category.
+     *
+     * @param string $categorySlug Category slug
+     *
+     * @return QueryBuilder Query builder
      */
     public function queryByCategorySlug(string $categorySlug): QueryBuilder
     {
@@ -71,29 +96,4 @@ class QuestionRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?? $this->createQueryBuilder('question');
     }
-
-    //    /**
-    //     * @return Question[] Returns an array of Question objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('q')
-    //            ->andWhere('q.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('q.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Question
-    //    {
-    //        return $this->createQueryBuilder('q')
-    //            ->andWhere('q.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
 }

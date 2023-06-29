@@ -1,9 +1,11 @@
 <?php
+/**
+ * Answer entity.
+ */
 
 namespace App\Entity;
 
 use App\Repository\AnswerRepository;
-use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -74,6 +76,8 @@ class Answer
 
     /**
      * Getter for id.
+     *
+     * @return int|null Id
      */
     public function getId(): ?int
     {
@@ -82,6 +86,8 @@ class Answer
 
     /**
      * Getter for username.
+     *
+     * @return string|null Username
      */
     public function getUsername(): ?string
     {
@@ -90,6 +96,8 @@ class Answer
 
     /**
      * Setter for username.
+     *
+     * @param string $username Username to set
      *
      * @return $this
      */
@@ -102,6 +110,8 @@ class Answer
 
     /**
      * Getter for email.
+     *
+     * @return string|null Email
      */
     public function getEmail(): ?string
     {
@@ -110,6 +120,8 @@ class Answer
 
     /**
      * Setter for email.
+     *
+     * @param string $email Email to set
      *
      * @return $this
      */
@@ -122,6 +134,8 @@ class Answer
 
     /**
      * Getter for content.
+     *
+     * @return string|null Content
      */
     public function getContent(): ?string
     {
@@ -130,6 +144,8 @@ class Answer
 
     /**
      * Setter for content.
+     *
+     * @param string $content Content to set
      *
      * @return $this
      */
@@ -142,6 +158,8 @@ class Answer
 
     /**
      * Getter for created at date.
+     *
+     * @return \DateTimeInterface|null CreatedAt date
      */
     public function getDate(): ?\DateTimeInterface
     {
@@ -150,6 +168,8 @@ class Answer
 
     /**
      * Setter for created at date.
+     *
+     * @param \DateTimeInterface $date Date to set
      *
      * @return $this
      */
@@ -162,6 +182,8 @@ class Answer
 
     /**
      * Getter for isDeleted.
+     *
+     * @return bool|null Is this Answer marked as deleted
      */
     public function isIsDeleted(): ?bool
     {
@@ -170,6 +192,8 @@ class Answer
 
     /**
      * Setter for isDeleted.
+     *
+     * @param bool $is_deleted Whether this Answer should be marked as deleted
      *
      * @return $this
      */
@@ -182,6 +206,8 @@ class Answer
 
     /**
      * Getter for Question.
+     *
+     * @return Question|null Related Question entity
      */
     public function getQuestion(): ?Question
     {
@@ -190,6 +216,8 @@ class Answer
 
     /**
      * Setter for Question.
+     *
+     * @param Question|null $question Question entity
      *
      * @return $this
      */
