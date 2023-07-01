@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="home.welcome">
+                <source>home.welcome</source>
+                <target>Welcome!</target>
+            </trans-unit>
+            <trans-unit id="questions.title">
+                <source>questions.title</source>
+                <target>Questions</target>
+            </trans-unit>
+            <trans-unit id="categories.title">
+                <source>categories.title</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="nav.questions">
+                <source>nav.questions</source>
+                <target>Questions</target>
+            </trans-unit>
+            <trans-unit id="nav.categories">
+                <source>nav.categories</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="0">
+                <source>questions.labels.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="1">
+                <source>questions.labels.answerCount</source>
+                <target># of answers</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>questions.labels.authorName</source>
+                <target>Asked by</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>questions.labels.created</source>
+                <target>Created at</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>questions.labels.lastModified</source>
+                <target>Edited At</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>message.empty_list</source>
+                <target>Not found!</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>category.labels.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>category.labels.authorName</source>
+                <target>Author</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>category.labels.numberOfQuestions</source>
+                <target># of questions</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>questions.labels.categories</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>questions.labels.content</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>answers.title</source>
+                <target>Answers</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>answers.header</source>
+                <target>%username% answered on %date%</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>labels.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>questions.in_category</source>
+                <target>Questions in %category% category</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>action_logout</source>
+                <target>Log out</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>action_login</source>
+                <target>Log in</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>questions.answer.title</source>
+                <target>Answer %questionTitle%</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>action.answer</source>
+                <target>Answer</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>action.back</source>
+                <target>Back</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>answer.labels.username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>answer.labels.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>answer.labels.content</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>questions.create.title</source>
+                <target>New question</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>questions.new</source>
+                <target>Create new</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>questions.created</source>
+                <target>Your question was added</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>answer.created</source>
+                <target>Your answer was added</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>category.created</source>
+                <target>Category was added</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>categories.create.title</source>
+                <target>New Category</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>categories.new</source>
+                <target>Create category</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>questions.edited</source>
+                <target>Question was edited</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>questions.edit.title</source>
+                <target>Edit question</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>actions.edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>categories.edited</source>
+                <target>Category was edited</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>categories.edit.title</source>
+                <target>Edit category</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>category.questions</source>
+                <target>Questions</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>actions.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>questions.deleted</source>
+                <target>Question was deleted</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>questions.delete.header</source>
+                <target>Delete %title%</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>category.deleted</source>
+                <target>Category was deleted</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>categories.delete.header</source>
+                <target>Delete category %name%</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>answers.deleted</source>
+                <target>Answer marked as deleted</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>answer.delete.header</source>
+                <target>Delete answer from %email%?</target>
+            </trans-unit>
+            <trans-unit id="55">
+                <source>answer.wasDeleted</source>
+                <target>This answer was deleted by admin</target>
+            </trans-unit>
+            <trans-unit id="56">
+                <source>answer.markedAsBest</source>
+                <target>Answer was marked as best</target>
+            </trans-unit>
+            <trans-unit id="57">
+                <source>answers.best.title</source>
+                <target>Best answer:</target>
+            </trans-unit>
+            <trans-unit id="58">
+                <source>actions.markAsBest</source>
+                <target>Mark as best</target>
+            </trans-unit>
+            <trans-unit id="59">
+                <source>profile.title</source>
+                <target>Your profile</target>
+            </trans-unit>
+            <trans-unit id="61">
+                <source>profile.labels.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="63">
+                <source>profile.labels.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="64">
+                <source>profile.labels.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="65">
+                <source>profile.incorrectPassword</source>
+                <target>Incorrect password</target>
+            </trans-unit>
+            <trans-unit id="66">
+                <source>profile.passwordMismatch</source>
+                <target>Password mismatch</target>
+            </trans-unit>
+            <trans-unit id="67">
+                <source>profile.passwordUpdated</source>
+                <target>Your password was updated</target>
+            </trans-unit>
+            <trans-unit id="68">
+                <source>profile.changePassword</source>
+                <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="69">
+                <source>profile.changePassword.title</source>
+                <target>Password change</target>
+            </trans-unit>
+            <trans-unit id="70">
+                <source>action.save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="71">
+                <source>profile.labels.newPassword</source>
+                <target>New password</target>
+            </trans-unit>
+            <trans-unit id="72">
+                <source>profile.labels.confirmPassword</source>
+                <target>Confirm password</target>
+            </trans-unit>
+            <trans-unit id="73">
+                <source>profile.labels.oldPassword</source>
+                <target>Current password</target>
+            </trans-unit>
+            <trans-unit id="74">
+                <source>profile.edit.title</source>
+                <target>Edit profile</target>
+            </trans-unit>
+            <trans-unit id="75">
+                <source>profile.labels.userData</source>
+                <target>Data</target>
+            </trans-unit>
+            <trans-unit id="76">
+                <source>action.none</source>
+                <target>None</target>
+            </trans-unit>
+            <trans-unit id="77">
+                <source>profile.edited</source>
+                <target>Your profile was updated</target>
+            </trans-unit>
+            <trans-unit id="78">
+                <source>message.form_error</source>
+                <target>Something went wrong</target>
+            </trans-unit>
+            <trans-unit id="79">
+                <source>title</source>
+                <target>Q&amp;A</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'questions.title'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% if category is defined %}
+        <h1>{{ 'questions.in_category'|trans({'%category%': category.name}) }}</h1>
+    {% else %}
+        <h1>{{ 'questions.title'|trans }}</h1>
+    {% endif %}
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class="btn btn-primary" href="{{ url('add_question') }}">{{ 'questions.new' | trans }}</a>
+    {% endif %}
+    {% if pagination is defined and pagination.items|length %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>{{ knp_pagination_sortable(pagination, 'questions.labels.title' | trans, 'question.title') }}</th>
+                    <th>{{ 'questions.labels.answerCount' | trans }}</th>
+                    <th>{{ 'questions.labels.categories' | trans }}</th>
+                    <th>{{ 'questions.labels.authorName' | trans }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'questions.labels.created' | trans, 'question.createdAt') }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'questions.labels.lastModified' | trans, 'question.lastModifiedAt') }}</th>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <th>{{ 'labels.actions' | trans }}</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for question in pagination.items %}
+                    <tr>
+                        <td>
+                            <a href="{{ url('single_question', {slug: question.slug}) }}">
+                                {{ question.title }}
+                            </a>
+                        </td>
+                        <td>{{ question.answers.count() }}</td>
+                        <td>
+                            {% for category in question.categories %}
+                                <a href="{{ url('question_by_category', {slug: category.slug}) }}">{{ category.name }}</a>
+                            {% endfor %}
+                        </td>
+                        <td>{{ question.author.getUserData().name }}</td>
+                        <td>{{ question.createdAt|format_date('relative_long') }}</td>
+                        <td>{{ question.lastModifiedAt|format_date('relative_long') }}</td>
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <td class="hstack gap-3">
+                                {% if not is_granted("EDIT", question) and not is_granted("DELETE", question) %}
+                                    {{ 'action.none' | trans }}
+                                {% endif %}
+                                {% if is_granted("EDIT", question) %}
+                                    <a href="{{ url('edit_question', {'slug': question.slug}) }}">{{ 'actions.edit' | trans }}</a>
+                                {% endif %}
+                                {% if is_granted("DELETE", question) %}
+                                    <a href="{{ url('delete_question', {'slug': question.slug}) }}">{{ 'actions.delete' | trans }}</a>
+                                {% endif %}
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    {% else %}
+        <p>
+            {{ 'message.empty_list'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

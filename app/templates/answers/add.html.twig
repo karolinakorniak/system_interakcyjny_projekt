@@ -1,0 +1,6 @@
+{% include 'default/_form.html.twig' with {
+    page_title: 'questions.answer.title'|trans({'%questionTitle%': question.title}),
+    form: form,
+    submit_label: 'action.save'|trans,
+    back_to_list_path: url('single_question', {slug: question.slug}),
+} %}

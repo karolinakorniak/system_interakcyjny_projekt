@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'profile.title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'profile.title'|trans }}</h1>
+    <a class="btn btn-secondary" href="{{ url('edit_profile') }}">
+        {{ 'actions.edit' | trans }}
+    </a>
+    <a class="btn btn-secondary" href="{{ url('change_password') }}">
+        {{ 'profile.changePassword' | trans }}
+    </a>
+    <div class="vstack gap-2">
+        <div class="row">
+            <label class="col">{{ 'profile.labels.email' | trans }}:</label>
+            <div class="col">{{ user.email }}</div>
+        </div>
+        <div class="row">
+            <label class="col">{{ 'profile.labels.name' | trans }}:</label>
+            <div class="col">{{ user.userData.name }}</div>
+        </div>
+        <div class="row">
+            <label class="col">{{ 'profile.labels.description' | trans }}:</label>
+            <div class="col">
+                <span>{{ user.userData.description }}</span>
+            </div>
+        </div>
+    </div>
+{% endblock %}

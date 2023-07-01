@@ -1,0 +1,7 @@
+{% include 'default/_form.html.twig' with {
+    page_title: 'answer.delete.header' | trans({'%email%': answer.email}),
+    form: form,
+    submit_label: 'action.save'|trans,
+    back_to_list_path: url('single_question', {'slug': answer.question.slug}),
+} %}
+
