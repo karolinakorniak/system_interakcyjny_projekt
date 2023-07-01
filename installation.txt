@@ -8,9 +8,10 @@
     2. Wykonaj "docker-compose up -d", aby stworzyć i uruchomić wszystkie serwisy Dockera
     3. Wykonaj "docker-compose exec php bash", aby otworzyć konsolę podłączoną do serwisu "php"
     4. W otworzonej konsoli wykonaj poniższe komendy:
-        1. "composer install", aby zainstalować wszystkie zależności
-        2. "php bin/console doctrine:migrations:migrate", aby wykonać migracje
-        3. "php bin/console doctrine:fixtures:load", aby wypełnić bazę danych losowymi danymi
+        1. cd app
+        2. "composer install", aby zainstalować wszystkie zależności
+        3. "php bin/console doctrine:migrations:migrate", aby wykonać migracje
+        4. "php bin/console doctrine:fixtures:load", aby wypełnić bazę danych losowymi danymi
     5. Projekt powinien działać na adresie "http://localhost:8000"
 3. Dokumentacja projektu jest dostępna w folderze "docs"
 4. Administratorzy:
