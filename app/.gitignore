@@ -29,3 +29,6 @@
 /.phpcs-cache
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
+
+/.phpdoc/
+/bin/phpDocumentor.phar
