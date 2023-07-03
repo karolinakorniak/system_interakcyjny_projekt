@@ -1,20 +1,22 @@
 1. Przeglądanie kodu:
     Kod aplikacji może być otworzony w środowisku PhpStorm poprzez
-    - otworzenie tego folderu jako projektu lub;
+    - otworzenie tego folderu jako projektu;
+ lub:
     - stworzenie nowego projektu na podstawie repozytorium Git: https://github.com/karolinakorniak/system_interakcyjny_projekt.git
-    Kod aplikacji znajduje się w folderze "app"
+    Kod aplikacji znajduje się w folderze "app".
+
 2. Uruchomienie projektu:
-    1. Otwórz terminal w obecny folderze
-    2. Wykonaj "docker-compose up -d", aby stworzyć i uruchomić wszystkie serwisy Dockera
-    3. Wykonaj "docker-compose exec php bash", aby otworzyć konsolę podłączoną do serwisu "php"
+    1. Otwórz terminal w obecnym folderze;
+    2. Wykonaj "docker-compose up -d", aby stworzyć i uruchomić wszystkie serwisy Dockera;
+    3. Wykonaj "docker-compose exec php bash", aby otworzyć konsolę podłączoną do serwisu "php";
     4. W otworzonej konsoli wykonaj poniższe komendy:
-        1. cd app
-        2. "composer install", aby zainstalować wszystkie zależności
-        3. "php bin/console doctrine:migrations:migrate", aby wykonać migracje
-        4. "php bin/console doctrine:fixtures:load", aby wypełnić bazę danych losowymi danymi
-    5. Projekt powinien działać na adresie "http://localhost:8000"
-3. Dokumentacja projektu jest dostępna w folderze "docs"
+        1. cd app;
+        2. "composer install", aby zainstalować wszystkie zależności;
+        3. "php bin/console doctrine:migrations:migrate", aby wykonać migracje;
+        4. "php bin/console doctrine:fixtures:load", aby wypełnić bazę danych losowymi danymi;
+    5. Projekt powinien działać na adresie "http://localhost:8000";
+3. Dokumentacja projektu jest dostępna w folderze "docs";
 4. Administratorzy:
     W bazie danych zostało stworzonych dwóch administratorów:
-    1. email "admin0@example.com" i hasło "user1234"
-    2. email "admin1@example.com" i hasło "user1234"
+    1. email "admin0@example.com" i hasło "user1234";
+    2. email "admin1@example.com" i hasło "user1234";
