@@ -32,3 +32,5 @@
 
 /.phpdoc/
 /bin/phpDocumentor.phar
+
+check_code.result.cache
